@@ -66,18 +66,18 @@ public class Expression {
         }
 
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int j = 0; j < this.expression.length; j++) {
             if (types[j] == ExpressionParts.OPERAND) {
                 sb.append(operands[j]);
             } else {
-               sb.append(types[j].symbol());
+                sb.append(types[j].symbol());
             }
-           sb.append(" ");
+            sb.append(" ");
         }
-        System.out.println();
         return sb.toString();
     }
 

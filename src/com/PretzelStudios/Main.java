@@ -28,7 +28,7 @@ public class Main {
 
     }
 
-    public static void testCalc() throws FileNotFoundException {
+    public static void testCalc() throws FileNotFoundException, Exception {
         ArrayList<String> problems = new ArrayList<>();
         ArrayList<String> results = new ArrayList<>();
         // load problems from a file
@@ -87,20 +87,27 @@ public class Main {
         // with the result to print.
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter an expression:");
-        System.out.println(calculate(sc.nextLine()));
+        try {
+            System.out.println(calculate(sc.nextLine()));
+        } catch (Exception e) {
+            System.out.println("Please enter a valid expression, with each element separated by a space:");
+        }
         while (true) {
-            System.out.println("Enter an expression to calculate, enter \"quit\" to leave");
+            System.out.println("Enter an expression to calculate, or enter \"quit\" to leave");
             String proccess = sc.nextLine();
             if (proccess.toUpperCase().equals("QUIT")) {
                 break;
             }
-            System.out.println(calculate(proccess));
-
+            try {
+                System.out.println(calculate(proccess));
+            } catch (Exception e) {
+                System.out.println("Please enter a valid expression, with each element separated by a space:");
+            }
         }
 
     }
 
-    public static String calculate (String s) {
+    public static String calculate(String s) throws Exception {
         String result = "clearly a bug".toUpperCase();
         StringTokenizer st = new StringTokenizer(s);
         int length = st.countTokens();
@@ -108,12 +115,13 @@ public class Main {
         for (int i = 0; i < length; i++) {
             sa[i] = st.nextToken();
         }
-        try {
-            Expression e = new Expression(sa);
-            System.out.println(e.toString());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        Expression e = new Expression(sa);
+        //System.out.println(e.toString());
+
+        //Look for operands, in order of operations
+        //When I get to one,
+
+
 
 
         return result;
