@@ -103,8 +103,9 @@ public class Main {
     public static String calculate (String s) {
         String result = "clearly a bug".toUpperCase();
         StringTokenizer st = new StringTokenizer(s);
-        String[] sa = new String[st.countTokens()];
-        for (int i = 0; i < st.countTokens(); i++) {
+        int length = st.countTokens();
+        String[] sa = new String[length];
+        for (int i = 0; i < length; i++) {
             sa[i] = st.nextToken();
         }
         try {

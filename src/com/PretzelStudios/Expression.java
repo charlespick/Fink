@@ -8,21 +8,25 @@ public class Expression {
     private String[] expression;
 
     public Expression(String[] expression) throws Exception {
-        operands = new double[expression.length];
-        expression = new String[expression.length];
+        //Save original input
+        this.expression = expression;
+
+        //Set sizes
         types = new ExpressionParts[expression.length];
-        for (int i = 0; i < expression.length; i++) {
-            this.expression = expression;
-            Scanner sc = new Scanner(expression[i]);
-            if (sc.hasNextDouble()) {
-                types[i] = ExpressionParts.OPERAND;
-                operands[i] = sc.nextDouble();
-            } else {
-                char[] possibility = expression[i].toCharArray();
-                if (possibility.length > 1) {
-                    throw new Exception("Not a supported operator");
+        operands = new double[expression.length];
+
+        // Separate out into expression parts
+        for (int i = 0; i < this.expression.length; i++) { //Iterate through
+            Scanner sc = new Scanner(expression[i]); //Will be used to test what is what
+            if (sc.hasNextDouble()) { //Tests for number
+                types[i] = ExpressionParts.OPERAND; //Saves that this part was a number
+                operands[i] = sc.nextDouble(); //Saves the number
+            } else { //might be an operator
+                char[] possibility = expression[i].toCharArray(); //Might be more than 1 character
+                if (possibility.length > 1) { //if so, fail
+                    throw new Exception("Not a supported operator"); //cry and throw things around
                 }
-                switch (expression[i]) {
+                switch (expression[i]) { //otherwise, determine what it is and save it
                     case "/":
                         types[i] = ExpressionParts.DIVISION_SYMBOL;
                         break;
@@ -53,12 +57,22 @@ public class Expression {
                     case ")":
                         types[i] = ExpressionParts.CLOSING_PARENS;
                         break;
-                    default:
+                    default: //unless it isn't supported
                         throw new Exception("Not a supported operator");
                 }
             }
 
+
         }
+        for (int j = 0; j < this.expression.length; j++) {
+            if (types[j] == ExpressionParts.OPERAND) {
+                System.out.print(operands[j]);
+            } else {
+                System.out.print(types[j]);
+            }
+            System.out.print(" ");
+        }
+        System.out.println();
     }
 
 
