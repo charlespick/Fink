@@ -89,7 +89,7 @@ public class Main {
         System.out.println("Enter an expression:");
         System.out.println(calculate(sc.nextLine()));
         while (true) {
-            System.out.println("Enter an expression to calculate, enter\"quit\" to leave");
+            System.out.println("Enter an expression to calculate, enter \"quit\" to leave");
             String proccess = sc.nextLine();
             if (proccess.toUpperCase().equals("QUIT")) {
                 break;
@@ -110,9 +110,12 @@ public class Main {
         }
         try {
             Expression e = new Expression(sa);
+            System.out.println(e.toString());
         }catch (Exception e){
             e.printStackTrace();
         }
+
+
         return result;
     }
 

@@ -64,15 +64,21 @@ public class Expression {
 
 
         }
+
+    }
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
         for (int j = 0; j < this.expression.length; j++) {
             if (types[j] == ExpressionParts.OPERAND) {
-                System.out.print(operands[j]);
+                sb.append(operands[j]);
             } else {
-                System.out.print(types[j]);
+               sb.append(types[j].symbol());
             }
-            System.out.print(" ");
+           sb.append(" ");
         }
         System.out.println();
+        return sb.toString();
     }
 
 
