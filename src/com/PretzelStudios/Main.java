@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Main {
 
@@ -11,19 +12,19 @@ public class Main {
         // comment out either startCalc() or testCalc() based on how you want to run the project
         // use this code to drive your interactive calculator
 
-        // add a welcome message here
+        System.out.println("Welcome to calculand!");
 
-        //startCalc();   // you have to write this method below
+        startCalc();   // you have to write this method below
         // it should ask the user for input and print
         // results until the user enters "quit" to stop
 
 
         // use this to validate your project (the calculator part, anyways)
-        testCalc();     // testCalc will call a calculate(String s) method that you create
+        //testCalc();     // testCalc will call a calculate(String s) method that you create
         // as part of your overall project. This method will take the user's
         // input, and return a String with the appropriate output.
 
-        // add a goodbye message here
+        System.out.println("Star me on GitHub!");
 
     }
 
@@ -84,13 +85,35 @@ public class Main {
         // your code here to get user input, and calculate/print results. You'll call
         // the calculate(String s) as part of your code here, which returns a String
         // with the result to print.
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter an expression:");
+        System.out.println(calculate(sc.nextLine()));
+        while (true) {
+            System.out.println("Enter an expression to calculate, enter\"quit\" to leave");
+            String proccess = sc.nextLine();
+            if (proccess.toUpperCase().equals("QUIT")) {
+                break;
+            }
+            System.out.println(calculate(proccess));
+
+        }
 
     }
 
-    public static String calculate(String s) {
-        String result = "error".toUpperCase();
-        
-
+    public static String calculate (String s) {
+        String result = "clearly a bug".toUpperCase();
+        StringTokenizer st = new StringTokenizer(s);
+        String[] sa = new String[st.countTokens()];
+        for (int i = 0; i < st.countTokens(); i++) {
+            sa[i] = st.nextToken();
+        }
+        try {
+            Expression e = new Expression(sa);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return result;
     }
+
+
 }
