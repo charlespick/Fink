@@ -100,15 +100,15 @@ public class Main {
             }
             try {
                 System.out.println(calculate(proccess));
-            } catch (Exception e) {
+            } catch (InvalidExpressionException e) {
                 System.out.println("Please enter a valid expression, with each element separated by a space:");
             }
         }
 
     }
 
-    public static String calculate(String s) throws Exception {
-        String result = "clearly a bug".toUpperCase();
+    public static String calculate(String s) throws InvalidExpressionException {
+        String result = "not calculating yet".toUpperCase();
         StringTokenizer st = new StringTokenizer(s);
         int length = st.countTokens();
         String[] sa = new String[length];
@@ -116,16 +116,9 @@ public class Main {
             sa[i] = st.nextToken();
         }
         Expression e = new Expression(sa);
-        System.out.println(e.toString());
-        if (e.verify()) {
-            System.out.println("Expression valid");
-        } else {
-
-            throw new Exception("Invalid expression");
-        }
-        //Look for operands, in order of operations
-        //When I get to one,
-
+        Expression e2 = new Expression(new String[]{"5", "+", "9"});
+        //Expression e3 = new Expression(e, e2);
+        ;
 
         return result;
     }
