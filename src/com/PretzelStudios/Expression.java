@@ -48,6 +48,15 @@ public class Expression {
                     case "t":
                         types[i] = ExpressionParts.TAN_SYMBOL;
                         break;
+                    case "cos":
+                        types[i] = ExpressionParts.COS_SYMBOL;
+                        break;
+                    case "sin":
+                        types[i] = ExpressionParts.SIN_SYMBOL;
+                        break;
+                    case "tan":
+                        types[i] = ExpressionParts.TAN_SYMBOL;
+                        break;
                     case "^":
                         types[i] = ExpressionParts.EXPONANT_SYMBOL;
                         break;
@@ -187,7 +196,7 @@ public class Expression {
                         }
                         break;
                     case CLOSING_PARENS:
-                        if (i < 5) {
+                        if (i < 4) {
                             return false;
                         }
                         if (types[i - 1] != ExpressionParts.OPERAND) {
@@ -195,14 +204,14 @@ public class Expression {
                         }
                         break;
                     case OPERAND:
-                        if(i>0){
+                        if (i > 0) {
                             if (types[i - 1] == ExpressionParts.OPERAND) {
                                 return false;
                             }
                             if (types[i + 1] == ExpressionParts.OPERAND) {
                                 return false;
                             }
-                        }else{
+                        } else {
                             if (types[i + 1] == ExpressionParts.OPERAND) {
                                 return false;
                             }

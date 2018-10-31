@@ -116,12 +116,15 @@ public class Main {
             sa[i] = st.nextToken();
         }
         Expression e = new Expression(sa);
-        //System.out.println(e.toString());
+        System.out.println(e.toString());
+        if (e.verify()) {
+            System.out.println("Expression valid");
+        } else {
 
+            throw new Exception("Invalid expression");
+        }
         //Look for operands, in order of operations
         //When I get to one,
-
-
 
 
         return result;
