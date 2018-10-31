@@ -48,6 +48,15 @@ public class Expression {
                     case "t":
                         types[i] = ExpressionParts.TAN_SYMBOL;
                         break;
+                    case "cos":
+                        types[i] = ExpressionParts.COS_SYMBOL;
+                        break;
+                    case "sin":
+                        types[i] = ExpressionParts.SIN_SYMBOL;
+                        break;
+                    case "tan":
+                        types[i] = ExpressionParts.TAN_SYMBOL;
+                        break;
                     case "^":
                         types[i] = ExpressionParts.EXPONANT_SYMBOL;
                         break;
@@ -81,5 +90,136 @@ public class Expression {
         return sb.toString();
     }
 
-
+    public boolean verify() {
+        for (int i = 0; i < types.length; i++) {
+            if (types[i] != ExpressionParts.OPERAND) {
+                switch (types[i]) { //otherwise, determine what it is and save it
+                    case DIVISION_SYMBOL:
+                        if (i < 1) {
+                            return false;
+                        }
+                        if (types[i - 1] != ExpressionParts.OPERAND) {
+                            if (types[i - 1] != ExpressionParts.CLOSING_PARENS) {
+                                return false;
+                            }
+                        }
+                        if (types[i + 1] != ExpressionParts.OPERAND) {
+                            if (!(types[i + 1] == ExpressionParts.SIN_SYMBOL | types[i + 1] == ExpressionParts.TAN_SYMBOL | types[i + 1] == ExpressionParts.COS_SYMBOL)) {
+                                if (types[i + 1] != ExpressionParts.OPEN_PARENS) {
+                                    return false;
+                                }
+                            }
+                        }
+                        break;
+                    case MULTIPLICATION_SYMBOL:
+                        if (i < 1) {
+                            return false;
+                        }
+                        if (types[i - 1] != ExpressionParts.OPERAND) {
+                            if (types[i - 1] != ExpressionParts.CLOSING_PARENS) {
+                                return false;
+                            }
+                        }
+                        if (types[i + 1] != ExpressionParts.OPERAND) {
+                            if (!(types[i + 1] == ExpressionParts.SIN_SYMBOL | types[i + 1] == ExpressionParts.TAN_SYMBOL | types[i + 1] == ExpressionParts.COS_SYMBOL)) {
+                                if (types[i + 1] != ExpressionParts.OPEN_PARENS) {
+                                    return false;
+                                }
+                            }
+                        }
+                        break;
+                    case SUBTRACTION_SYMBOL:
+                        if (i < 1) {
+                            return false;
+                        }
+                        if (types[i - 1] != ExpressionParts.OPERAND) {
+                            if (types[i - 1] != ExpressionParts.CLOSING_PARENS) {
+                                return false;
+                            }
+                        }
+                        if (types[i + 1] != ExpressionParts.OPERAND) {
+                            if (!(types[i + 1] == ExpressionParts.SIN_SYMBOL | types[i + 1] == ExpressionParts.TAN_SYMBOL | types[i + 1] == ExpressionParts.COS_SYMBOL)) {
+                                if (types[i + 1] != ExpressionParts.OPEN_PARENS) {
+                                    return false;
+                                }
+                            }
+                        }
+                        break;
+                    case PLUS_SYMBOL:
+                        if (i < 1) {
+                            return false;
+                        }
+                        if (types[i - 1] != ExpressionParts.OPERAND) {
+                            if (types[i - 1] != ExpressionParts.CLOSING_PARENS) {
+                                return false;
+                            }
+                        }
+                        if (types[i + 1] != ExpressionParts.OPERAND) {
+                            if (!(types[i + 1] == ExpressionParts.SIN_SYMBOL | types[i + 1] == ExpressionParts.TAN_SYMBOL | types[i + 1] == ExpressionParts.COS_SYMBOL)) {
+                                if (types[i + 1] != ExpressionParts.OPEN_PARENS) {
+                                    return false;
+                                }
+                            }
+                        }
+                        break;
+                    case COS_SYMBOL:
+                        if (types[i + 1] != ExpressionParts.OPERAND) {
+                            return false;
+                        }
+                        break;
+                    case SIN_SYMBOL:
+                        if (types[i + 1] != ExpressionParts.OPERAND) {
+                            return false;
+                        }
+                        break;
+                    case TAN_SYMBOL:
+                        if (types[i + 1] != ExpressionParts.OPERAND) {
+                            return false;
+                        }
+                        break;
+                    case EXPONANT_SYMBOL:
+                        if (i < 1) {
+                            return false;
+                        }
+                        if (types[i - 1] != ExpressionParts.OPERAND) {
+                            return false;
+                        }
+                        if (types[i + 1] != ExpressionParts.OPERAND) {
+                            if (!(types[i + 1] == ExpressionParts.SIN_SYMBOL | types[i + 1] == ExpressionParts.TAN_SYMBOL | types[i + 1] == ExpressionParts.COS_SYMBOL)) {
+                                return false;
+                            }
+                        }
+                        break;
+                    case OPEN_PARENS:
+                        if (types[i + 1] != ExpressionParts.OPERAND) {
+                            return false;
+                        }
+                        break;
+                    case CLOSING_PARENS:
+                        if (i < 4) {
+                            return false;
+                        }
+                        if (types[i - 1] != ExpressionParts.OPERAND) {
+                            return false;
+                        }
+                        break;
+                    case OPERAND:
+                        if (i > 0) {
+                            if (types[i - 1] == ExpressionParts.OPERAND) {
+                                return false;
+                            }
+                            if (types[i + 1] == ExpressionParts.OPERAND) {
+                                return false;
+                            }
+                        } else {
+                            if (types[i + 1] == ExpressionParts.OPERAND) {
+                                return false;
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+        return true;
+    }
 }
