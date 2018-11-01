@@ -178,6 +178,10 @@ public class Expression {
     private boolean verifyTrig(ExpressionParts[] peices, int indexToCheck) {
         try {
             if (peices[indexToCheck + 1] != ExpressionParts.OPERAND) {
+                if(peices[indexToCheck + 1] == ExpressionParts.COS_SYMBOL|peices[indexToCheck + 1] == ExpressionParts.TAN_SYMBOL|peices[indexToCheck + 1] == ExpressionParts.SIN_SYMBOL){
+                    return true;
+                }
+
                 return false;
             }
         } catch (ArrayIndexOutOfBoundsException e) {

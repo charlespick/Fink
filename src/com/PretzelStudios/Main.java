@@ -132,23 +132,5 @@ public class Main {
 
         return result.toUpperCase();
     }
-
-    private static void testCase() {
-        Expression full;
-        Expression part;
-        try {
-            full = new Expression(new String[]{"8", "+", "c", "9", "+", "9"});
             part = new Expression(-0.91113026188);
-            Util.resolveOneOp(full, part, 2);
-            if (!full.verify()) {
-                System.out.println("It didn't work" + full.toString());
-            } else {
-                System.out.println(full.toString());
-            }
-
-        } catch (InvalidExpressionException e) {
-            e.printStackTrace();
-        }
-
-    }
 }
