@@ -105,7 +105,6 @@ public class Main {
                 System.out.println("Please enter a valid expression, with each element separated by a space:");
             }
         }
-
     }
 
     public static String calculate(String s) throws InvalidExpressionException {
