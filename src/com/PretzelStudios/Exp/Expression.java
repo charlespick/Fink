@@ -67,12 +67,17 @@ public class Expression {
         }
     }
 
-    public Expression(double operand){
+    public Expression(double operand) throws InvalidExpressionException{
         length = 1;
         types = new ExpressionParts[1];
         types[0] = ExpressionParts.OPERAND;
         operands = new double[1];
         operands[0] = operand;
+        if (!verify()) {
+            throw new InvalidExpressionException(this);
+        } else {
+            System.out.println("Exp " + toString() + " is valid");
+        }
 
     }
 

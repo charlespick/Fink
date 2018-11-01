@@ -14,7 +14,7 @@ import java.util.StringTokenizer;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
-        //testCase();
+        testCase();
 
         // comment out either startCalc() or testCalc() based on how you want to run the project
         // use this code to drive your interactive calculator
@@ -128,9 +128,9 @@ public class Main {
         Expression full;
         Expression part;
         try {
-            full = new Expression(new String[]{"8", "+", "9", "*", "4", "+", "9"});
-            part = new Expression(36);
-            Util.resolveTwoOp(full, part, 2);
+            full = new Expression(new String[]{"8", "+", "c", "9", "+", "9"});
+            part = new Expression(-0.91113026188);
+            Util.resolveOneOp(full, part, 2);
             if(!full.verify()){
                 System.out.println("It didn't work" + full.toString());
             }else{
