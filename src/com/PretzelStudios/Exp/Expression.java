@@ -62,7 +62,7 @@ public class Expression {
         }
     }
 
-    public Expression(double operand) throws InvalidExpressionException{
+    public Expression(double operand) {
         length = 1;
         types = new ExpressionParts[1];
         types[0] = ExpressionParts.OPERAND;
@@ -73,7 +73,7 @@ public class Expression {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int j = 0; j <= this.length-1; j++) {
+        for (int j = 0; j <= this.length - 1; j++) {
             if (types[j] == ExpressionParts.OPERAND) {
                 sb.append(operands[j]);
             } else {
@@ -178,7 +178,7 @@ public class Expression {
     private boolean verifyTrig(ExpressionParts[] peices, int indexToCheck) {
         try {
             if (peices[indexToCheck + 1] != ExpressionParts.OPERAND) {
-                if(peices[indexToCheck + 1] == ExpressionParts.COS_SYMBOL|peices[indexToCheck + 1] == ExpressionParts.TAN_SYMBOL|peices[indexToCheck + 1] == ExpressionParts.SIN_SYMBOL){
+                if (peices[indexToCheck + 1] == ExpressionParts.COS_SYMBOL | peices[indexToCheck + 1] == ExpressionParts.TAN_SYMBOL | peices[indexToCheck + 1] == ExpressionParts.SIN_SYMBOL) {
                     return true;
                 }
 

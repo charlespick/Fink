@@ -20,13 +20,13 @@ public class Main {
 
         System.out.println("Welcome to calculand!");
 
-        startCalc();   // you have to write this method below
+        //startCalc();   // you have to write this method below
         // it should ask the user for input and print
         // results until the user enters "quit" to stop
 
 
         // use this to validate your project (the calculator part, anyways)
-        //testCalc();     // testCalc will call a calculate(String s) method that you create
+        testCalc();     // testCalc will call a calculate(String s) method that you create
         // as part of your overall project. This method will take the user's
         // input, and return a String with the appropriate output.
 
@@ -99,20 +99,19 @@ public class Main {
             if (proccess.toUpperCase().equals("QUIT")) {
                 break;
             }
-            try {
                 System.out.println(calculate(proccess));
-            } catch (UnsupportedOperatorException uoe) {
-                System.out.println(new String(uoe.unsupportedOp) + " is not supported");
-                System.out.println("Please enter a valid expression:");
-            } catch (InvalidExpressionException iee) {
-                System.out.println(iee.getInvalidExp() + " is not valid");
-                System.out.println("Please enter a valid expression, with each element separated by a space:");
-            }
         }
     }
 
-    public static String calculate(String s) throws InvalidExpressionException {
-        String result = "processed";
+    public static String calculate(String s)  {
+        //this seems like a weird place to do this but whatever
+
+        if(s.toUpperCase().equals("QUIT")){
+            return "quit";
+        }
+
+
+        String result = "error";
         //Capture input and create object
         StringTokenizer st = new StringTokenizer(s);
         int length = st.countTokens();
@@ -120,8 +119,13 @@ public class Main {
         for (int i = 0; i < length; i++) {
             sa[i] = st.nextToken();
         }
-        Expression e = new Expression(sa);
 
+        Expression e;
+        try {
+            e = new Expression(sa);
+        }catch (InvalidExpressionException iee){
+            return "error".toUpperCase();
+        }
         //Check for and compute all trig, right to left
         boolean trigMightExist = true;
         while (trigMightExist) {

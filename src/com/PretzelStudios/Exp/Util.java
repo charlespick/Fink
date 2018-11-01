@@ -20,8 +20,8 @@ public abstract class Util {
 
         //move in data after
         for (int i = beginningIndex + 3; i < full.length; i++) {
-            parts[i-2] = full.types[i];
-            operands[i-2] = full.operands[i];
+            parts[i - 2] = full.types[i];
+            operands[i - 2] = full.operands[i];
         }
 
         //save off arrays
@@ -48,8 +48,8 @@ public abstract class Util {
 
         //move in data after
         for (int i = beginningIndex + 2; i < full.length; i++) {
-            parts[i-1] = full.types[i];
-            operands[i-1] = full.operands[i];
+            parts[i - 1] = full.types[i];
+            operands[i - 1] = full.operands[i];
         }
 
         //save off arrays
