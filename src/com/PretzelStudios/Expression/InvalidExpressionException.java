@@ -1,4 +1,4 @@
-package com.PretzelStudios;
+package com.PretzelStudios.Expression;
 
 public class InvalidExpressionException extends Exception {
     private Expression invalidExp;

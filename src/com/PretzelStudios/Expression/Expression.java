@@ -1,4 +1,4 @@
-package com.PretzelStudios;
+package com.PretzelStudios.Expression;
 
 import java.util.Scanner;
 
@@ -206,29 +206,11 @@ public class Expression {
                     }
                     break;
                 case COS_SYMBOL:
-                    if (i+1>types.length) {
-                        return false;
-                    }
-                    if (types[i + 1] != ExpressionParts.OPERAND) {
-                        return false;
-                    }
-                    break;
+                    return verifyTrig(types, i);
                 case SIN_SYMBOL:
-                    if (i+1>types.length) {
-                        return false;
-                    }
-                    if (types[i + 1] != ExpressionParts.OPERAND) {
-                        return false;
-                    }
-                    break;
+                    return verifyTrig(types, i);
                 case TAN_SYMBOL:
-                    if (i+1>types.length) {
-                        return false;
-                    }
-                    if (types[i + 1] != ExpressionParts.OPERAND) {
-                        return false;
-                    }
-                    break;
+                    return verifyTrig(types, i);
                 case EXPONANT_SYMBOL:
                     if (i+1>types.length) {
                         return false;
@@ -246,21 +228,9 @@ public class Expression {
                     }
                     break;
                 case OPEN_PARENS:
-                    if (i+1>types.length) {
-                        return false;
-                    }
-                    if (types[i + 1] != ExpressionParts.OPERAND) {
-                        return false;
-                    }
-                    break;
+                    return false;
                 case CLOSING_PARENS:
-                    if (i < 4) {
-                        return false;
-                    }
-                    if (types[i - 1] != ExpressionParts.OPERAND) {
-                        return false;
-                    }
-                    break;
+                    return false;
                 case OPERAND:
                     if (i > 0) {
                         if (types[i - 1] == ExpressionParts.OPERAND) {
@@ -284,4 +254,26 @@ public class Expression {
         }
         return true;
     }
+
+    private boolean verifyTrig(ExpressionParts[] peices, int indexToCheck){
+        try{
+            if(peices[indexToCheck+1] != ExpressionParts.OPERAND){
+                return false;
+            }
+        }catch(ArrayIndexOutOfBoundsException e){
+            return false;
+        }
+        return true;
+    }
+    private boolean verify4Funct(ExpressionParts[] peices, int indexToCheck){
+        if(indexToCheck==1){
+
+        }else if (indexToCheck==peices.length){
+
+        }else{
+
+        }
+    }
+
+
 }

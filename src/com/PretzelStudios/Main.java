@@ -1,10 +1,13 @@
 package com.PretzelStudios;
 
+import com.PretzelStudios.Expression.InvalidExpressionException;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+import com.PretzelStudios.Expression.*;
 
 public class Main {
 
@@ -116,9 +119,7 @@ public class Main {
             sa[i] = st.nextToken();
         }
         Expression e = new Expression(sa);
-        Expression e2 = new Expression(new String[]{"5", "+", "9"});
-        //Expression e3 = new Expression(e, e2);
-        ;
+
 
         return result;
     }
