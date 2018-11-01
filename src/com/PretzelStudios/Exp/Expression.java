@@ -1,4 +1,4 @@
-package com.PretzelStudios.Expression;
+package com.PretzelStudios.Exp;
 
 import java.util.Scanner;
 
@@ -25,7 +25,7 @@ public class Expression {
             } else { //might be an operator
                 char[] possibility = expression[i].toCharArray(); //Might be more than 1 character
                 if (possibility.length > 1) { //if so, fail
-                    throw new InvalidExpressionException(possibility + " is not a supported operator"); //cry and throw things around
+                    throw new UnsupportedOperatorException(this, possibility); //cry and throw things around
                 }
                 switch (possibility[0]) { //otherwise, determine what it is and save it
                     case '/':
@@ -49,52 +49,22 @@ public class Expression {
                     case 't':
                         types[i] = ExpressionParts.TAN_SYMBOL;
                         break;
-                    //Removed support for these for now
-//                    case 'cos':
-//                        types[i] = ExpressionParts.COS_SYMBOL;
-//                        break;
-//                    case 'sin':
-//                        types[i] = ExpressionParts.SIN_SYMBOL;
-//                        break;
-//                    case 'tan':
-//                        types[i] = ExpressionParts.TAN_SYMBOL;
-//                        break;
                     case '^':
                         types[i] = ExpressionParts.EXPONANT_SYMBOL;
                         break;
                     case '(':
-                        throw new UnsupportedExpressionException("Open parentheses not supported not supposed at this time");
+                        throw new UnsupportedOperatorException(this, possibility);
                     case ')':
-                        throw new UnsupportedExpressionException("Closing parentheses not supported not supposed at this time");
+                        throw new UnsupportedOperatorException(this, possibility);
                     default: //unless it isn't supported
-                        throw new UnsupportedExpressionException(possibility + " is not a supported operator");
+                        throw new UnsupportedOperatorException(this, possibility);
                 }
             }
         }
         if (!verify()) {
-            throw new InvalidExpressionException(this, "Invalid expression");
+            throw new InvalidExpressionException(this);
         } else {
-            System.out.println("Expression " + toString() + " is valid");
-        }
-    }
-
-    public Expression(Expression e1, Expression e2) throws InvalidExpressionException {
-        length = e1.length + e2.length;
-        types = new ExpressionParts[length];
-        expression = new String[length];
-        operands = new double[length];
-
-        System.arraycopy(e1.types, 0, types, 0, e1.length);
-        System.arraycopy(e2.types, 0, types, e1.length, e2.length);
-        System.arraycopy(e1.operands, 0, operands, 0, e1.length);
-        System.arraycopy(e2.operands, 0, operands, e1.length, e2.length);
-        System.arraycopy(e1.expression, 0, expression, 0, e1.length);
-        System.arraycopy(e2.expression, 0, expression, e1.length, e2.length);
-
-        if (!verify()) {
-            throw new InvalidExpressionException(this, "Invalid expression");
-        } else {
-            System.out.println("Expression " + toString() + " is valid");
+            System.out.println("Exp " + toString() + " is valid");
         }
     }
 

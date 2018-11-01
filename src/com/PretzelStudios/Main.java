@@ -1,13 +1,13 @@
 package com.PretzelStudios;
 
-import com.PretzelStudios.Expression.InvalidExpressionException;
+import com.PretzelStudios.Exp.InvalidExpressionException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
-import com.PretzelStudios.Expression.*;
+import com.PretzelStudios.Exp.*;
 
 public class Main {
 
@@ -63,7 +63,7 @@ public class Main {
                 String result = calculate(prob);
                 if (result == null) {
                     System.out.println("FAILED test " + i);
-                    System.out.println("Expression: " + problems.get(i));
+                    System.out.println("Exp: " + problems.get(i));
                     System.out.println("Expected result: " + results.get(i));
                     System.out.println("Actual: null String returned from calculate()");
                 } else {
@@ -71,7 +71,7 @@ public class Main {
                         System.out.println("PASSED test " + i);
                     } else {
                         System.out.println("FAILED test " + i);
-                        System.out.println("Expression: " + problems.get(i));
+                        System.out.println("Exp: " + problems.get(i));
                         System.out.println("Expected result: " + results.get(i));
                         System.out.println("Actual: " + result);
                     }
@@ -89,12 +89,6 @@ public class Main {
         // the calculate(String s) as part of your code here, which returns a String
         // with the result to print.
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter an expression:");
-        try {
-            System.out.println(calculate(sc.nextLine()));
-        } catch (Exception e) {
-            System.out.println("Please enter a valid expression, with each element separated by a space:");
-        }
         while (true) {
             System.out.println("Enter an expression to calculate, or enter \"quit\" to leave");
             String proccess = sc.nextLine();
@@ -103,7 +97,11 @@ public class Main {
             }
             try {
                 System.out.println(calculate(proccess));
-            } catch (InvalidExpressionException e) {
+            } catch (UnsupportedOperatorException uoe) {
+                System.out.println(new String(uoe.unsupportedOp) + " is not supported");
+                System.out.println("Please enter a valid expression:");
+            }catch (InvalidExpressionException iee){
+                System.out.println(iee.getInvalidExp() + " is not valid");
                 System.out.println("Please enter a valid expression, with each element separated by a space:");
             }
         }
@@ -111,7 +109,7 @@ public class Main {
     }
 
     public static String calculate(String s) throws InvalidExpressionException {
-        String result = "proccessed".toUpperCase();
+        String result = "processed".toUpperCase();
         StringTokenizer st = new StringTokenizer(s);
         int length = st.countTokens();
         String[] sa = new String[length];
@@ -119,8 +117,6 @@ public class Main {
             sa[i] = st.nextToken();
         }
         Expression e = new Expression(sa);
-
-
         return result;
     }
 
