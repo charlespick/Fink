@@ -27,60 +27,55 @@ public class Expression {
                 if (possibility.length > 1) { //if so, fail
                     throw new InvalidExpressionException(possibility + " is not a supported operator"); //cry and throw things around
                 }
-                switch (expression[i]) { //otherwise, determine what it is and save it
-                    case "/":
+                switch (possibility[0]) { //otherwise, determine what it is and save it
+                    case '/':
                         types[i] = ExpressionParts.DIVISION_SYMBOL;
                         break;
-                    case "*":
+                    case '*':
                         types[i] = ExpressionParts.MULTIPLICATION_SYMBOL;
                         break;
-                    case "-":
+                    case '-':
                         types[i] = ExpressionParts.SUBTRACTION_SYMBOL;
                         break;
-                    case "+":
+                    case '+':
                         types[i] = ExpressionParts.PLUS_SYMBOL;
                         break;
-                    case "c":
+                    case 'c':
                         types[i] = ExpressionParts.COS_SYMBOL;
                         break;
-                    case "s":
+                    case 's':
                         types[i] = ExpressionParts.SIN_SYMBOL;
                         break;
-                    case "t":
+                    case 't':
                         types[i] = ExpressionParts.TAN_SYMBOL;
                         break;
-                    case "cos":
-                        types[i] = ExpressionParts.COS_SYMBOL;
-                        break;
-                    case "sin":
-                        types[i] = ExpressionParts.SIN_SYMBOL;
-                        break;
-                    case "tan":
-                        types[i] = ExpressionParts.TAN_SYMBOL;
-                        break;
-                    case "^":
+                    //Removed support for these for now
+//                    case 'cos':
+//                        types[i] = ExpressionParts.COS_SYMBOL;
+//                        break;
+//                    case 'sin':
+//                        types[i] = ExpressionParts.SIN_SYMBOL;
+//                        break;
+//                    case 'tan':
+//                        types[i] = ExpressionParts.TAN_SYMBOL;
+//                        break;
+                    case '^':
                         types[i] = ExpressionParts.EXPONANT_SYMBOL;
                         break;
-                    case "(":
-                        types[i] = ExpressionParts.OPEN_PARENS;
-                        break;
-                    case ")":
-                        types[i] = ExpressionParts.CLOSING_PARENS;
-                        break;
+                    case '(':
+                        throw new UnsupportedExpressionException("Open parentheses not supported not supposed at this time");
+                    case ')':
+                        throw new UnsupportedExpressionException("Closing parentheses not supported not supposed at this time");
                     default: //unless it isn't supported
-                        throw new InvalidExpressionException(possibility + " is not a supported operator");
+                        throw new UnsupportedExpressionException(possibility + " is not a supported operator");
                 }
             }
-
-
         }
         if (!verify()) {
             throw new InvalidExpressionException(this, "Invalid expression");
         } else {
             System.out.println("Expression " + toString() + " is valid");
         }
-
-
     }
 
     public Expression(Expression e1, Expression e2) throws InvalidExpressionException {
@@ -126,152 +121,125 @@ public class Expression {
 
             switch (types[i]) { //otherwise, determine what it is and save it
                 case DIVISION_SYMBOL:
-                    if (i+1>types.length) {
+                    if (!verify4Funct(types, i)) {
                         return false;
-                    }
-                    if (i < 1) {
-                        return false;
-                    }
-                    if (types[i - 1] != ExpressionParts.OPERAND) {
-                        if (types[i - 1] != ExpressionParts.CLOSING_PARENS) {
-                            return false;
-                        }
-                    }
-                    if (types[i + 1] != ExpressionParts.OPERAND) {
-                        if (!(types[i + 1] == ExpressionParts.SIN_SYMBOL | types[i + 1] == ExpressionParts.TAN_SYMBOL | types[i + 1] == ExpressionParts.COS_SYMBOL)) {
-                            if (types[i + 1] != ExpressionParts.OPEN_PARENS) {
-                                return false;
-                            }
-                        }
                     }
                     break;
                 case MULTIPLICATION_SYMBOL:
-                    if (i+1>types.length) {
+                    if (!verify4Funct(types, i)) {
                         return false;
-                    }
-                    if (i < 1) {
-                        return false;
-                    }
-                    if (types[i - 1] != ExpressionParts.OPERAND) {
-                        if (types[i - 1] != ExpressionParts.CLOSING_PARENS) {
-                            return false;
-                        }
-                    }
-                    if (types[i + 1] != ExpressionParts.OPERAND) {
-                        if (!(types[i + 1] == ExpressionParts.SIN_SYMBOL | types[i + 1] == ExpressionParts.TAN_SYMBOL | types[i + 1] == ExpressionParts.COS_SYMBOL)) {
-                            if (types[i + 1] != ExpressionParts.OPEN_PARENS) {
-                                return false;
-                            }
-                        }
                     }
                     break;
                 case SUBTRACTION_SYMBOL:
-                    if (i+1>types.length) {
+                    if (!verify4Funct(types, i)) {
                         return false;
-                    }
-                    if (i < 1) {
-                        return false;
-                    }
-                    if (types[i - 1] != ExpressionParts.OPERAND) {
-                        if (types[i - 1] != ExpressionParts.CLOSING_PARENS) {
-                            return false;
-                        }
-                    }
-                    if (types[i + 1] != ExpressionParts.OPERAND) {
-                        if (!(types[i + 1] == ExpressionParts.SIN_SYMBOL | types[i + 1] == ExpressionParts.TAN_SYMBOL | types[i + 1] == ExpressionParts.COS_SYMBOL)) {
-                            if (types[i + 1] != ExpressionParts.OPEN_PARENS) {
-                                return false;
-                            }
-                        }
                     }
                     break;
                 case PLUS_SYMBOL:
-                    if (i+1>types.length) {
+                    if (!verify4Funct(types, i)) {
                         return false;
-                    }
-                    if (i < 1) {
-                        return false;
-                    }
-                    if (types[i - 1] != ExpressionParts.OPERAND) {
-                        if (types[i - 1] != ExpressionParts.CLOSING_PARENS) {
-                            return false;
-                        }
-                    }
-                    if (types[i + 1] != ExpressionParts.OPERAND) {
-                        if (!(types[i + 1] == ExpressionParts.SIN_SYMBOL | types[i + 1] == ExpressionParts.TAN_SYMBOL | types[i + 1] == ExpressionParts.COS_SYMBOL)) {
-                            if (types[i + 1] != ExpressionParts.OPEN_PARENS) {
-                                return false;
-                            }
-                        }
                     }
                     break;
                 case COS_SYMBOL:
-                    return verifyTrig(types, i);
+                    if (!verifyTrig(types, i)) {
+                        return false;
+                    }
+                    break;
                 case SIN_SYMBOL:
-                    return verifyTrig(types, i);
+                    if (!verifyTrig(types, i)) {
+                        return false;
+                    }
+                    break;
                 case TAN_SYMBOL:
-                    return verifyTrig(types, i);
+                    if (!verifyTrig(types, i)) {
+                        return false;
+                    }
+                    break;
                 case EXPONANT_SYMBOL:
-                    if (i+1>types.length) {
+                    if (!verify4Funct(types, i)) {
                         return false;
-                    }
-                    if (i < 1) {
-                        return false;
-                    }
-                    if (types[i - 1] != ExpressionParts.OPERAND) {
-                        return false;
-                    }
-                    if (types[i + 1] != ExpressionParts.OPERAND) {
-                        if (!(types[i + 1] == ExpressionParts.SIN_SYMBOL | types[i + 1] == ExpressionParts.TAN_SYMBOL | types[i + 1] == ExpressionParts.COS_SYMBOL)) {
-                            return false;
-                        }
                     }
                     break;
                 case OPEN_PARENS:
-                    return false;
+                    return false; //not supported right now
                 case CLOSING_PARENS:
-                    return false;
+                    return false; //not supported right now
                 case OPERAND:
-                    if (i > 0) {
-                        if (types[i - 1] == ExpressionParts.OPERAND) {
-                            return false;
-                        }
-                        if (i+1 < types.length) {
-                            if (types[i + 1] == ExpressionParts.OPERAND) {
+                    if (types.length == 1) {
+
+                    } else if (i == 0) {
+                        switch (types[i + 1]) {
+                            case OPERAND:
                                 return false;
-                            }
+                            case TAN_SYMBOL:
+                                return false;
+                            case SIN_SYMBOL:
+                                return false;
+                            case COS_SYMBOL:
+                                return false;
+                            case OPEN_PARENS:
+                                return false;
+                            case CLOSING_PARENS:
+                                return false;
+                        }
+                    } else if (i + 1 == types.length) {
+                        switch (types[i - 1]) {
+                            case CLOSING_PARENS:
+                                return false;
+                            case OPEN_PARENS:
+                                return false;
+                            case OPERAND:
+                                return false;
                         }
                     } else {
-                        if (i+1 < types.length) {
-                            if (types[i + 1] == ExpressionParts.OPERAND) {
+                        switch (types[i + 1]) {
+                            case OPERAND:
                                 return false;
-                            }
+                            case OPEN_PARENS:
+                                return false;
+                            case CLOSING_PARENS:
+                                return false;
                         }
                     }
-                    break;
             }
 
         }
         return true;
     }
 
-    private boolean verifyTrig(ExpressionParts[] peices, int indexToCheck){
-        try{
-            if(peices[indexToCheck+1] != ExpressionParts.OPERAND){
+    private boolean verifyTrig(ExpressionParts[] peices, int indexToCheck) {
+        try {
+            if (peices[indexToCheck + 1] != ExpressionParts.OPERAND) {
                 return false;
             }
-        }catch(ArrayIndexOutOfBoundsException e){
+        } catch (ArrayIndexOutOfBoundsException e) {
             return false;
         }
         return true;
     }
-    private boolean verify4Funct(ExpressionParts[] peices, int indexToCheck){
-        if(indexToCheck==1){
 
-        }else if (indexToCheck==peices.length){
-
-        }else{
-
+    private boolean verify4Funct(ExpressionParts[] peices, int indexToCheck) {
+        if (indexToCheck == 0) {
+            return false;
+        } else if (indexToCheck + 1 == peices.length) {
+            return false;
+        } else {
+            if (peices[indexToCheck - 1] != ExpressionParts.OPERAND) { //if the thing before is an operator
+                return false;
+            }
+            if (peices[indexToCheck + 1] != ExpressionParts.OPERAND) { //if the thing after is an operator
+                switch (peices[indexToCheck + 1]) {
+                    case COS_SYMBOL:
+                        break;
+                    case SIN_SYMBOL:
+                        break;
+                    case TAN_SYMBOL:
+                        break;
+                    default:
+                        return false;
+                }
+            }
+            return true;
         }
     }
 

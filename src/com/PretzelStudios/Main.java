@@ -111,7 +111,7 @@ public class Main {
     }
 
     public static String calculate(String s) throws InvalidExpressionException {
-        String result = "not calculating yet".toUpperCase();
+        String result = "proccessed".toUpperCase();
         StringTokenizer st = new StringTokenizer(s);
         int length = st.countTokens();
         String[] sa = new String[length];
