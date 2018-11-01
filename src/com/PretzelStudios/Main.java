@@ -155,11 +155,11 @@ public class Main {
             for (int i = 0; i < e.length; i++) {
                 switch (e.types[i]) {
                     case EXPONANT_SYMBOL:
-                        Util.resolveTwoOp(e, new Expression(Math.pow(e.operands[i-1], e.operands[i+1])), i-1);
+                        Util.resolveTwoOp(e, new Expression(Math.pow(e.operands[i - 1], e.operands[i + 1])), i - 1);
                         i = -1;
                         break;
                     default:
-                        if (i == e.length-1) {
+                        if (i == e.length - 1) {
                             expMightExist = false;
                         }
                         break;
@@ -174,11 +174,11 @@ public class Main {
             for (int i = 0; i < e.length; i++) {
                 switch (e.types[i]) {
                     case MULTIPLICATION_SYMBOL:
-                        Util.resolveTwoOp(e, new Expression(e.operands[i-1]*e.operands[i+1]), i-1);
+                        Util.resolveTwoOp(e, new Expression(e.operands[i - 1] * e.operands[i + 1]), i - 1);
                         i = -1;
                         break;
                     default:
-                        if (i == e.length-1) {
+                        if (i == e.length - 1) {
                             multMightExist = false;
                         }
                         break;
@@ -186,9 +186,59 @@ public class Main {
             }
         }
         //Check for and compute all division , left to right
+        boolean divMightExist = true;
+        while (divMightExist) {
+            //search for exp ops from left to right
+            for (int i = 0; i < e.length; i++) {
+                switch (e.types[i]) {
+                    case DIVISION_SYMBOL:
+                        Util.resolveTwoOp(e, new Expression(e.operands[i - 1] / e.operands[i + 1]), i - 1);
+                        i = -1;
+                        break;
+                    default:
+                        if (i == e.length - 1) {
+                            divMightExist = false;
+                        }
+                        break;
+                }
+            }
+        }
         //Check for and compute all addition, left to right
+        boolean addMightExist = true;
+        while (addMightExist) {
+            //search for exp ops from left to right
+            for (int i = 0; i < e.length; i++) {
+                switch (e.types[i]) {
+                    case PLUS_SYMBOL:
+                        Util.resolveTwoOp(e, new Expression(e.operands[i - 1] + e.operands[i + 1]), i - 1);
+                        i = -1;
+                        break;
+                    default:
+                        if (i == e.length - 1) {
+                            addMightExist = false;
+                        }
+                        break;
+                }
+            }
+        }
         //Check for and compute all subtraction, left to right
-
+        boolean subMightExist = true;
+        while (subMightExist) {
+            //search for exp ops from left to right
+            for (int i = 0; i < e.length; i++) {
+                switch (e.types[i]) {
+                    case SUBTRACTION_SYMBOL:
+                        Util.resolveTwoOp(e, new Expression(e.operands[i - 1] - e.operands[i + 1]), i - 1);
+                        i = -1;
+                        break;
+                    default:
+                        if (i == e.length - 1) {
+                            subMightExist = false;
+                        }
+                        break;
+                }
+            }
+        }
 
         result = e.toString();
 
