@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Expression {
     public int length;
-    ExpressionParts[] types;
-    double[] operands;
+    public ExpressionParts[] types;
+    public double[] operands;
 
     public Expression(String[] expression) throws InvalidExpressionException {
         //Save original input
@@ -60,11 +60,6 @@ public class Expression {
                 }
             }
         }
-        if (!verify()) {
-            throw new InvalidExpressionException(this);
-        } else {
-            System.out.println("Exp " + toString() + " is valid");
-        }
     }
 
     public Expression(double operand) throws InvalidExpressionException{
@@ -73,12 +68,6 @@ public class Expression {
         types[0] = ExpressionParts.OPERAND;
         operands = new double[1];
         operands[0] = operand;
-        if (!verify()) {
-            throw new InvalidExpressionException(this);
-        } else {
-            System.out.println("Exp " + toString() + " is valid");
-        }
-
     }
 
     @Override

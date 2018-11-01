@@ -6,22 +6,21 @@ import com.PretzelStudios.Exp.UnsupportedOperatorException;
 import com.PretzelStudios.Exp.Util;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException {
-        testCase();
+    public static void main(String[] args) throws Exception {
+        //testCase();
 
         // comment out either startCalc() or testCalc() based on how you want to run the project
         // use this code to drive your interactive calculator
 
         System.out.println("Welcome to calculand!");
 
-        //startCalc();   // you have to write this method below
+        startCalc();   // you have to write this method below
         // it should ask the user for input and print
         // results until the user enters "quit" to stop
 
@@ -35,7 +34,7 @@ public class Main {
 
     }
 
-    public static void testCalc() throws FileNotFoundException, Exception {
+    public static void testCalc() throws Exception {
         ArrayList<String> problems = new ArrayList<>();
         ArrayList<String> results = new ArrayList<>();
         // load problems from a file
@@ -113,7 +112,8 @@ public class Main {
     }
 
     public static String calculate(String s) throws InvalidExpressionException {
-        String result = "processed".toUpperCase();
+        String result = "processed";
+        //Capture input and create object
         StringTokenizer st = new StringTokenizer(s);
         int length = st.countTokens();
         String[] sa = new String[length];
@@ -121,7 +121,16 @@ public class Main {
             sa[i] = st.nextToken();
         }
         Expression e = new Expression(sa);
-        return result;
+
+        while (e.length > 1) {
+            //search for first operator in order of operations
+            //do operation when found
+            //resolve new expression
+            //repeat
+        }
+
+
+        return result.toUpperCase();
     }
 
     private static void testCase() {
@@ -131,9 +140,9 @@ public class Main {
             full = new Expression(new String[]{"8", "+", "c", "9", "+", "9"});
             part = new Expression(-0.91113026188);
             Util.resolveOneOp(full, part, 2);
-            if(!full.verify()){
+            if (!full.verify()) {
                 System.out.println("It didn't work" + full.toString());
-            }else{
+            } else {
                 System.out.println(full.toString());
             }
 
