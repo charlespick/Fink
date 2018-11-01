@@ -1,10 +1,13 @@
 package com.PretzelStudios;
 
+import com.PretzelStudios.Expression.InvalidExpressionException;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+import com.PretzelStudios.Expression.*;
 
 public class Main {
 
@@ -100,15 +103,15 @@ public class Main {
             }
             try {
                 System.out.println(calculate(proccess));
-            } catch (Exception e) {
+            } catch (InvalidExpressionException e) {
                 System.out.println("Please enter a valid expression, with each element separated by a space:");
             }
         }
 
     }
 
-    public static String calculate(String s) throws Exception {
-        String result = "clearly a bug".toUpperCase();
+    public static String calculate(String s) throws InvalidExpressionException {
+        String result = "proccessed".toUpperCase();
         StringTokenizer st = new StringTokenizer(s);
         int length = st.countTokens();
         String[] sa = new String[length];
@@ -116,15 +119,6 @@ public class Main {
             sa[i] = st.nextToken();
         }
         Expression e = new Expression(sa);
-        System.out.println(e.toString());
-        if (e.verify()) {
-            System.out.println("Expression valid");
-        } else {
-
-            throw new Exception("Invalid expression");
-        }
-        //Look for operands, in order of operations
-        //When I get to one,
 
 
         return result;
