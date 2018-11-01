@@ -81,7 +81,7 @@ public class Expression {
             }
             sb.append(" ");
         }
-        return sb.toString();
+        return sb.toString().trim();
     }
 
     public boolean verify() {
