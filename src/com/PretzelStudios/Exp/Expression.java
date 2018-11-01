@@ -6,18 +6,17 @@ public class Expression {
     public int length;
     ExpressionParts[] types;
     double[] operands;
-    private String[] expression;
 
     public Expression(String[] expression) throws InvalidExpressionException {
         //Save original input
-        this.expression = expression;
+
         this.length = expression.length;
         //Set sizes
         types = new ExpressionParts[expression.length];
         operands = new double[expression.length];
 
         // Separate out into expression parts
-        for (int i = 0; i < this.expression.length; i++) { //Iterate through
+        for (int i = 0; i < this.length; i++) { //Iterate through
             Scanner sc = new Scanner(expression[i]); //Will be used to test what is what
             if (sc.hasNextDouble()) { //Tests for number
                 types[i] = ExpressionParts.OPERAND; //Saves that this part was a number
@@ -68,14 +67,24 @@ public class Expression {
         }
     }
 
-    public String getOriginal() {
-        return expression.toString();
+    public Expression(double operand) throws InvalidExpressionException{
+        length = 1;
+        types = new ExpressionParts[1];
+        types[0] = ExpressionParts.OPERAND;
+        operands = new double[1];
+        operands[0] = operand;
+        if (!verify()) {
+            throw new InvalidExpressionException(this);
+        } else {
+            System.out.println("Exp " + toString() + " is valid");
+        }
+
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int j = 0; j < this.expression.length; j++) {
+        for (int j = 0; j <= this.length-1; j++) {
             if (types[j] == ExpressionParts.OPERAND) {
                 sb.append(operands[j]);
             } else {
