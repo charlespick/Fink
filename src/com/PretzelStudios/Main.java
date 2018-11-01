@@ -1,23 +1,27 @@
 package com.PretzelStudios;
 
+import com.PretzelStudios.Exp.Expression;
 import com.PretzelStudios.Exp.InvalidExpressionException;
+import com.PretzelStudios.Exp.UnsupportedOperatorException;
+import com.PretzelStudios.Exp.Util;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
-import com.PretzelStudios.Exp.*;
 
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
+        //testCase();
+
         // comment out either startCalc() or testCalc() based on how you want to run the project
         // use this code to drive your interactive calculator
 
         System.out.println("Welcome to calculand!");
 
-        startCalc();   // you have to write this method below
+        //startCalc();   // you have to write this method below
         // it should ask the user for input and print
         // results until the user enters "quit" to stop
 
@@ -85,6 +89,7 @@ public class Main {
     }
 
     public static void startCalc() {
+
         // your code here to get user input, and calculate/print results. You'll call
         // the calculate(String s) as part of your code here, which returns a String
         // with the result to print.
@@ -100,7 +105,7 @@ public class Main {
             } catch (UnsupportedOperatorException uoe) {
                 System.out.println(new String(uoe.unsupportedOp) + " is not supported");
                 System.out.println("Please enter a valid expression:");
-            }catch (InvalidExpressionException iee){
+            } catch (InvalidExpressionException iee) {
                 System.out.println(iee.getInvalidExp() + " is not valid");
                 System.out.println("Please enter a valid expression, with each element separated by a space:");
             }
@@ -119,5 +124,22 @@ public class Main {
         return result;
     }
 
+    private static void testCase() {
+        Expression full;
+        Expression part;
+        try {
+            full = new Expression(new String[]{"8", "+", "9", "*", "4", "+", "9"});
+            part = new Expression(36);
+            Util.resolveTwoOp(full, part, 2);
+            if(!full.verify()){
+                System.out.println("It didn't work" + full.toString());
+            }else{
+                System.out.println(full.toString());
+            }
 
+        } catch (InvalidExpressionException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
