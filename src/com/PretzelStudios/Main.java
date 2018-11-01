@@ -122,13 +122,75 @@ public class Main {
         }
         Expression e = new Expression(sa);
 
-        while (e.length > 1) {
-            //search for first operator in order of operations
-            //do operation when found
-            //resolve new expression
-            //repeat
+        //Check for and compute all trig, right to left
+        boolean trigMightExist = true;
+        while (trigMightExist) {
+            //search for trig ops from right to left
+            for (int i = e.length - 1; i >= 0; i--) {
+                switch (e.types[i]) {
+                    case COS_SYMBOL:
+                        Util.resolveOneOp(e, new Expression(Math.cos(e.operands[i + 1])), i);
+                        i = -1;
+                        break;
+                    case SIN_SYMBOL:
+                        Util.resolveOneOp(e, new Expression(Math.sin(e.operands[i + 1])), i);
+                        i = -1;
+                        break;
+                    case TAN_SYMBOL:
+                        Util.resolveOneOp(e, new Expression(Math.tan(e.operands[i + 1])), i);
+                        i = -1;
+                        break;
+                    default:
+                        if (i == 0) {
+                            trigMightExist = false;
+                        }
+                        break;
+                }
+            }
+        }
+        //Check for and compute all exponents, left to right
+        boolean expMightExist = true;
+        while (expMightExist) {
+            //search for exp ops from left to right
+            for (int i = 0; i < e.length; i++) {
+                switch (e.types[i]) {
+                    case EXPONANT_SYMBOL:
+                        Util.resolveTwoOp(e, new Expression(Math.pow(e.operands[i-1], e.operands[i+1])), i-1);
+                        i = -1;
+                        break;
+                    default:
+                        if (i == e.length-1) {
+                            expMightExist = false;
+                        }
+                        break;
+                }
+            }
         }
 
+        //Check for and compute all multiplication, left to right
+        boolean multMightExist = true;
+        while (multMightExist) {
+            //search for exp ops from left to right
+            for (int i = 0; i < e.length; i++) {
+                switch (e.types[i]) {
+                    case MULTIPLICATION_SYMBOL:
+                        Util.resolveTwoOp(e, new Expression(e.operands[i-1]*e.operands[i+1]), i-1);
+                        i = -1;
+                        break;
+                    default:
+                        if (i == e.length-1) {
+                            multMightExist = false;
+                        }
+                        break;
+                }
+            }
+        }
+        //Check for and compute all division , left to right
+        //Check for and compute all addition, left to right
+        //Check for and compute all subtraction, left to right
+
+
+        result = e.toString();
 
         return result.toUpperCase();
     }
