@@ -51,6 +51,18 @@ public class Expression {
                     case '^':
                         types[i] = ExpressionParts.EXPONANT_SYMBOL;
                         break;
+                    case '|':
+                        types[i] = ExpressionParts.ABSOLUTE_VALUE;
+                        break;
+                    case 'v':
+                        types[i] = ExpressionParts.RADICAL;
+                        break;
+                    case '~':
+                        types[i] = ExpressionParts.ROUND;
+                        break;
+                    case '%':
+                        types[i] = ExpressionParts.MODULO;
+                        break;
                     case '(':
                         throw new UnsupportedOperatorException(this, possibility);
                     case ')':
@@ -59,6 +71,12 @@ public class Expression {
                         throw new UnsupportedOperatorException(this, possibility);
                 }
             }
+        }
+        if (!verify()) {
+            throw new InvalidExpressionException(this);
+        }
+        if (length == 1) {
+            throw new InvalidExpressionException(this);
         }
     }
 
@@ -77,7 +95,7 @@ public class Expression {
             if (types[j] == ExpressionParts.OPERAND) {
                 sb.append(operands[j]);
             } else {
-                sb.append(types[j].symbol());
+                sb.append(types[j].symbol);
             }
             sb.append(" ");
         }
@@ -87,44 +105,54 @@ public class Expression {
     public boolean verify() {
         for (int i = 0; i < types.length; i++) {
 
-            switch (types[i]) { //otherwise, determine what it is and save it
+            switch (types[i]) {
                 case DIVISION_SYMBOL:
-                    if (!verify4Funct(types, i)) {
+                    if (!verifyTwoOp(types, i)) {
                         return false;
                     }
                     break;
                 case MULTIPLICATION_SYMBOL:
-                    if (!verify4Funct(types, i)) {
+                    if (!verifyTwoOp(types, i)) {
                         return false;
                     }
                     break;
                 case SUBTRACTION_SYMBOL:
-                    if (!verify4Funct(types, i)) {
+                    if (!verifyTwoOp(types, i)) {
                         return false;
                     }
                     break;
                 case PLUS_SYMBOL:
-                    if (!verify4Funct(types, i)) {
+                    if (!verifyTwoOp(types, i)) {
                         return false;
                     }
                     break;
                 case COS_SYMBOL:
-                    if (!verifyTrig(types, i)) {
+                    if (!verifyOneOp(types, i)) {
                         return false;
                     }
                     break;
                 case SIN_SYMBOL:
-                    if (!verifyTrig(types, i)) {
+                    if (!verifyOneOp(types, i)) {
                         return false;
                     }
                     break;
                 case TAN_SYMBOL:
-                    if (!verifyTrig(types, i)) {
+                    if (!verifyOneOp(types, i)) {
                         return false;
                     }
                     break;
                 case EXPONANT_SYMBOL:
-                    if (!verify4Funct(types, i)) {
+                    if (!verifyTwoOp(types, i)) {
+                        return false;
+                    }
+                    break;
+                case ABSOLUTE_VALUE:
+                    if (!verifyOneOp(types, i)) {
+                        return false;
+                    }
+                    break;
+                case RADICAL:
+                    if (!verifyOneOp(types, i)) {
                         return false;
                     }
                     break;
@@ -146,6 +174,12 @@ public class Expression {
                             case COS_SYMBOL:
                                 return false;
                             case OPEN_PARENS:
+                                return false;
+                            case ABSOLUTE_VALUE:
+                                return false;
+                            case ROUND:
+                                return false;
+                            case RADICAL:
                                 return false;
                             case CLOSING_PARENS:
                                 return false;
@@ -175,10 +209,10 @@ public class Expression {
         return true;
     }
 
-    private boolean verifyTrig(ExpressionParts[] peices, int indexToCheck) {
+    private boolean verifyOneOp(ExpressionParts[] peices, int indexToCheck) {
         try {
             if (peices[indexToCheck + 1] != ExpressionParts.OPERAND) {
-                if (peices[indexToCheck + 1] == ExpressionParts.COS_SYMBOL | peices[indexToCheck + 1] == ExpressionParts.TAN_SYMBOL | peices[indexToCheck + 1] == ExpressionParts.SIN_SYMBOL) {
+                if (peices[indexToCheck + 1] == ExpressionParts.COS_SYMBOL | peices[indexToCheck + 1] == ExpressionParts.TAN_SYMBOL | peices[indexToCheck + 1] == ExpressionParts.SIN_SYMBOL | peices[indexToCheck + 1] == ExpressionParts.ABSOLUTE_VALUE | peices[indexToCheck + 1] == ExpressionParts.RADICAL | peices[indexToCheck + 1] == ExpressionParts.ROUND) {
                     return true;
                 }
 
@@ -190,7 +224,7 @@ public class Expression {
         return true;
     }
 
-    private boolean verify4Funct(ExpressionParts[] peices, int indexToCheck) {
+    private boolean verifyTwoOp(ExpressionParts[] peices, int indexToCheck) {
         if (indexToCheck == 0) {
             return false;
         } else if (indexToCheck + 1 == peices.length) {
@@ -206,6 +240,8 @@ public class Expression {
                     case SIN_SYMBOL:
                         break;
                     case TAN_SYMBOL:
+                        break;
+                    case ABSOLUTE_VALUE:
                         break;
                     default:
                         return false;
