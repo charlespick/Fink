@@ -123,6 +123,46 @@ public class Main {
         } catch (InvalidExpressionException iee) {
             return "error".toUpperCase();
         }
+
+        //Check for and compute all abs, right to left
+        boolean absMightExist = true;
+        while (absMightExist) {
+            //search for abs ops from right to left
+            for (int i = e.length - 1; i >= 0; i--) {
+                switch (e.types[i]) {
+                    case ABSOLUTE_VALUE:
+                        //check what is to the right
+
+
+                        switch (e.types[i + 1]) {
+                            //is it a trig op?
+                            case COS_SYMBOL:
+                                Util.resolveOneOp(e, new Expression(Math.cos(e.operands[i + 2])), i + 1);
+                                i = -1;
+                                break;
+                            case SIN_SYMBOL:
+                                Util.resolveOneOp(e, new Expression(Math.sin(e.operands[i + 2])), i + 1);
+                                i = -1;
+                                break;
+                            case TAN_SYMBOL:
+                                Util.resolveOneOp(e, new Expression(Math.tan(e.operands[i + 2])), i + 1);
+                                i = -1;
+                                break;
+                            case OPERAND:
+                                Util.resolveOneOp(e, new Expression(Math.abs(e.operands[i+1])), i);
+                                i = -1;
+                        }
+                        break;
+                    default:
+                        if (i == 0) {
+                            absMightExist = false;
+                        }
+                        break;
+                }
+            }
+        }
+
+
         //Check for and compute all trig, right to left
         boolean trigMightExist = true;
         while (trigMightExist) {

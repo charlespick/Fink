@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb588f30-6e21-4653-a1c3-794a9155955c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/PretzelStudios/Exp/Expression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/PretzelStudios/Exp/Expression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/PretzelStudios/Exp/ExpressionParts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/PretzelStudios/Exp/ExpressionParts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/PretzelStudios/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/PretzelStudios/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -16,35 +18,40 @@
     <session id="-1007456186">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="3" />
           <entry key="project.open.time.20" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.8" value="2" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="8959" />
+          <entry key="java" value="9317" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="8959" />
+          <entry key="JAVA" value="9317" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="java" value="13" />
+          <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JAVA" value="13" />
+          <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages" />
     </session>
   </component>
   <component name="FavoritesManager">
@@ -55,8 +62,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+            <state relative-caret-position="529">
+              <caret line="154" column="30" lean-forward="true" selection-start-line="154" selection-start-column="30" selection-end-line="154" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#testCalc#0;class#Main#0" />
@@ -66,9 +73,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/problems.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/Util.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-289">
+            <state relative-caret-position="90">
               <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
@@ -77,12 +93,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/Expression.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="83" column="35" selection-start-line="83" selection-start-column="35" selection-end-line="83" selection-end-column="35" />
+            <state relative-caret-position="472">
+              <caret line="66" column="55" selection-start-line="66" selection-start-column="55" selection-end-line="66" selection-end-column="55" />
               <folding>
-                <element signature="method#Expression#0;class#Expression#0" />
                 <element signature="method#Expression#1;class#Expression#0" />
-                <element signature="method#verify4Funct#0;class#Expression#0" />
+                <element signature="method#verifyTwoOp#0;class#Expression#0" />
               </folding>
             </state>
           </provider>
@@ -100,11 +115,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/ExpressionParts.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
-              <folding>
-                <element signature="e#450#451#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="90">
+              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -152,14 +164,15 @@
         <option value="$PROJECT_DIR$/src/com/PretzelStudios/Operations.java" />
         <option value="$PROJECT_DIR$/src/com/PretzelStudios/Exp/UnsupportedOperatorException.java" />
         <option value="$PROJECT_DIR$/src/com/PretzelStudios/Exp/Util.java" />
+        <option value="$PROJECT_DIR$/src/com/PretzelStudios/Exp/ExpressionParts.java" />
         <option value="$PROJECT_DIR$/src/com/PretzelStudios/Exp/Expression.java" />
         <option value="$PROJECT_DIR$/src/com/PretzelStudios/Main.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1680" />
-    <option name="height" value="1050" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -169,6 +182,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -199,11 +213,11 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541097757458" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541116970229" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -260,7 +274,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
@@ -268,15 +282,15 @@
       <window_info id="Capture Tool" order="2" />
       <window_info id="Favorites" order="3" sideWeight="0.5045593" side_tool="true" weight="0.27106228" />
       <window_info id="Image Layers" order="4" />
-      <window_info content_ui="combo" id="Project" order="5" sideWeight="0.49591836" visible="true" weight="0.27106228" />
-      <window_info id="Structure" order="6" sideWeight="0.5040816" side_tool="true" visible="true" weight="0.27106228" />
+      <window_info content_ui="combo" id="Project" order="5" sideWeight="0.49337262" visible="true" weight="0.27635783" />
+      <window_info id="Structure" order="6" sideWeight="0.5066274" side_tool="true" visible="true" weight="0.27635783" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32959184" />
-      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.5005325" side_tool="true" weight="0.32772276" />
       <window_info anchor="bottom" id="Messages" order="2" weight="0.32959184" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32959184" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.32959184" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.32857144" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.49946752" visible="true" weight="0.32772276" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.36020407" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -387,46 +401,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Operations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="42" lean-forward="true" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
-          <folding>
-            <element signature="e#122#123#0" expanded="true" />
-            <element signature="e#159#160#0" expanded="true" />
-            <element signature="e#224#225#0" expanded="true" />
-            <element signature="e#261#262#0" expanded="true" />
-            <element signature="e#321#322#0" expanded="true" />
-            <element signature="e#358#359#0" expanded="true" />
-            <element signature="e#426#427#0" expanded="true" />
-            <element signature="e#463#464#0" expanded="true" />
-            <element signature="e#528#529#0" expanded="true" />
-            <element signature="e#565#566#0" expanded="true" />
-            <element signature="e#671#672#0" expanded="true" />
-            <element signature="e#696#697#0" expanded="true" />
-            <element signature="e#732#733#0" expanded="true" />
-            <element signature="e#775#776#0" expanded="true" />
-            <element signature="e#811#812#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Operations.java" />
     <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/InvalidExpressionException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/Expression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="83" column="35" selection-start-line="83" selection-start-column="35" selection-end-line="83" selection-end-column="35" />
-          <folding>
-            <element signature="method#Expression#0;class#Expression#0" />
-            <element signature="method#Expression#1;class#Expression#0" />
-            <element signature="method#verify4Funct#0;class#Expression#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -437,27 +416,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/ExpressionParts.java">
+    <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/Util.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#450#451#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/Util.java">
+    <entry file="file://$PROJECT_DIR$/problems.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-289">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="420">
+          <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/ExpressionParts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/Expression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="66" column="55" selection-start-line="66" selection-start-column="55" selection-end-line="66" selection-end-column="55" />
+          <folding>
+            <element signature="method#Expression#1;class#Expression#0" />
+            <element signature="method#verifyTwoOp#0;class#Expression#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+        <state relative-caret-position="529">
+          <caret line="154" column="30" lean-forward="true" selection-start-line="154" selection-start-column="30" selection-end-line="154" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#testCalc#0;class#Main#0" />
