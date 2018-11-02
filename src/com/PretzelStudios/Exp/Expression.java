@@ -54,6 +54,9 @@ public class Expression {
                     case '|':
                         types[i] = ExpressionParts.ABSOLUTE_VALUE;
                         break;
+                    case 'V':
+                        types[i] = ExpressionParts.RADICAL;
+                        break;
                     case '(':
                         throw new UnsupportedOperatorException(this, possibility);
                     case ')':
