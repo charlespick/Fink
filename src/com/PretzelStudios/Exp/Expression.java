@@ -54,8 +54,14 @@ public class Expression {
                     case '|':
                         types[i] = ExpressionParts.ABSOLUTE_VALUE;
                         break;
-                    case 'V':
+                    case 'v':
                         types[i] = ExpressionParts.RADICAL;
+                        break;
+                    case '~':
+                        types[i] = ExpressionParts.ROUND;
+                        break;
+                    case '%':
+                        types[i] = ExpressionParts.MODULO;
                         break;
                     case '(':
                         throw new UnsupportedOperatorException(this, possibility);
@@ -66,7 +72,10 @@ public class Expression {
                 }
             }
         }
-        if(!verify()){
+        if (!verify()) {
+            throw new InvalidExpressionException(this);
+        }
+        if (length == 1) {
             throw new InvalidExpressionException(this);
         }
     }
@@ -96,7 +105,7 @@ public class Expression {
     public boolean verify() {
         for (int i = 0; i < types.length; i++) {
 
-            switch (types[i]) { //otherwise, determine what it is and save it
+            switch (types[i]) {
                 case DIVISION_SYMBOL:
                     if (!verifyTwoOp(types, i)) {
                         return false;
@@ -142,6 +151,11 @@ public class Expression {
                         return false;
                     }
                     break;
+                case RADICAL:
+                    if (!verifyOneOp(types, i)) {
+                        return false;
+                    }
+                    break;
                 case OPEN_PARENS:
                     return false; //not supported right now
                 case CLOSING_PARENS:
@@ -160,6 +174,12 @@ public class Expression {
                             case COS_SYMBOL:
                                 return false;
                             case OPEN_PARENS:
+                                return false;
+                            case ABSOLUTE_VALUE:
+                                return false;
+                            case ROUND:
+                                return false;
+                            case RADICAL:
                                 return false;
                             case CLOSING_PARENS:
                                 return false;
@@ -192,7 +212,7 @@ public class Expression {
     private boolean verifyOneOp(ExpressionParts[] peices, int indexToCheck) {
         try {
             if (peices[indexToCheck + 1] != ExpressionParts.OPERAND) {
-                if (peices[indexToCheck + 1] == ExpressionParts.COS_SYMBOL | peices[indexToCheck + 1] == ExpressionParts.TAN_SYMBOL | peices[indexToCheck + 1] == ExpressionParts.SIN_SYMBOL) {
+                if (peices[indexToCheck + 1] == ExpressionParts.COS_SYMBOL | peices[indexToCheck + 1] == ExpressionParts.TAN_SYMBOL | peices[indexToCheck + 1] == ExpressionParts.SIN_SYMBOL | peices[indexToCheck + 1] == ExpressionParts.ABSOLUTE_VALUE | peices[indexToCheck + 1] == ExpressionParts.RADICAL | peices[indexToCheck + 1] == ExpressionParts.ROUND) {
                     return true;
                 }
 

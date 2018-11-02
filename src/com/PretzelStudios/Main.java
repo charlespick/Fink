@@ -12,22 +12,21 @@ import java.util.StringTokenizer;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        //testCase();
-
-        // comment out either startCalc() or testCalc() based on how you want to run the project
-        // use this code to drive your interactive calculator
-
         System.out.println("Welcome to calculand!");
+        Scanner sc = new Scanner(args[0]);
+        if (sc.hasNextInt()) {
+            switch (sc.nextInt()) {
+                case 0:
+                    startCalc();
+                    break;
+                case 1:
+                    testCalc();
+                    break;
+            }
+        } else {
+            System.out.println("Usage: Calculand [operating mode - 0,1]");
+        }
 
-        startCalc();   // you have to write this method below
-        // it should ask the user for input and print
-        // results until the user enters "quit" to stop
-
-
-        // use this to validate your project (the calculator part, anyways)
-        //testCalc();     // testCalc will call a calculate(String s) method that you create
-        // as part of your overall project. This method will take the user's
-        // input, and return a String with the appropriate output.
 
         System.out.println("Star me on GitHub!");
 
@@ -116,6 +115,9 @@ public class Main {
         for (int i = 0; i < length; i++) {
             sa[i] = st.nextToken();
         }
+        if (sa.length==0){
+            return "error".toUpperCase();
+        }
 
         Expression e;
         try {
@@ -124,51 +126,21 @@ public class Main {
             return "error".toUpperCase();
         }
 
-        //Check for and compute all abs, right to left
-        boolean absMightExist = true;
-        while (absMightExist) {
-            //search for abs ops from right to left
-            for (int i = e.length - 1; i >= 0; i--) {
-                switch (e.types[i]) {
-                    case ABSOLUTE_VALUE:
-                        //check what is to the right
 
-
-                        switch (e.types[i + 1]) {
-                            //is it a trig op?
-                            case COS_SYMBOL:
-                                Util.resolveOneOp(e, new Expression(Math.cos(e.operands[i + 2])), i + 1);
-                                i = -1;
-                                break;
-                            case SIN_SYMBOL:
-                                Util.resolveOneOp(e, new Expression(Math.sin(e.operands[i + 2])), i + 1);
-                                i = -1;
-                                break;
-                            case TAN_SYMBOL:
-                                Util.resolveOneOp(e, new Expression(Math.tan(e.operands[i + 2])), i + 1);
-                                i = -1;
-                                break;
-                            case OPERAND:
-                                Util.resolveOneOp(e, new Expression(Math.abs(e.operands[i+1])), i);
-                                i = -1;
-                        }
-                        break;
-                    default:
-                        if (i == 0) {
-                            absMightExist = false;
-                        }
-                        break;
-                }
-            }
-        }
-
-
-        //Check for and compute all trig, right to left
-        boolean trigMightExist = true;
-        while (trigMightExist) {
+        //Check for and compute all one operands, right to left
+        boolean oneOpMightExist = true;
+        while (oneOpMightExist) {
             //search for trig ops from right to left
             for (int i = e.length - 1; i >= 0; i--) {
                 switch (e.types[i]) {
+                    case ABSOLUTE_VALUE:
+                        Util.resolveOneOp(e, new Expression(Math.abs(e.operands[i + 1])), i);
+                        i = -1;
+                        break;
+                    case RADICAL:
+                        Util.resolveOneOp(e, new Expression(Math.sqrt(e.operands[i + 1])), i);
+                        i = -1;
+                        break;
                     case COS_SYMBOL:
                         Util.resolveOneOp(e, new Expression(Math.cos(e.operands[i + 1])), i);
                         i = -1;
@@ -181,9 +153,13 @@ public class Main {
                         Util.resolveOneOp(e, new Expression(Math.tan(e.operands[i + 1])), i);
                         i = -1;
                         break;
+                    case ROUND:
+                        Util.resolveOneOp(e, new Expression(Math.round(e.operands[i + 1])), i);
+                        i = -1;
+                        break;
                     default:
                         if (i == 0) {
-                            trigMightExist = false;
+                            oneOpMightExist = false;
                         }
                         break;
                 }
@@ -202,6 +178,24 @@ public class Main {
                     default:
                         if (i == e.length - 1) {
                             expMightExist = false;
+                        }
+                        break;
+                }
+            }
+        }
+
+        boolean modMightExist = true;
+        while (modMightExist) {
+            //search for exp ops from left to right
+            for (int i = 0; i < e.length; i++) {
+                switch (e.types[i]) {
+                    case MODULO:
+                        Util.resolveTwoOp(e, new Expression(e.operands[i - 1]% e.operands[i + 1]), i - 1);
+                        i = -1;
+                        break;
+                    default:
+                        if (i == e.length - 1) {
+                            modMightExist = false;
                         }
                         break;
                 }
@@ -280,7 +274,6 @@ public class Main {
                 }
             }
         }
-
         return e.toString();
     }
 }
