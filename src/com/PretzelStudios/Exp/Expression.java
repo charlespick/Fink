@@ -8,6 +8,7 @@ public class Expression {
     public double[] operands;
 
     public Expression(String[] expression) throws InvalidExpressionException {
+
         //Save original input
 
         this.length = expression.length;
@@ -105,6 +106,7 @@ public class Expression {
     }
 
     public boolean verify() {
+        int parenthesesCount = 0;
         for (int i = 0; i < types.length; i++) {
 
             switch (types[i]) {
@@ -159,14 +161,10 @@ public class Expression {
                     }
                     break;
                 case OPEN_PARENS:
-                    if (!verifyOpen(types, i)) {
-                        return false;
-                    }
+                    parenthesesCount++;
                     break;
                 case CLOSING_PARENS:
-                    if (!verifyClosed(types, i)) {
-                        return false;
-                    }
+                    parenthesesCount--;
                     break;
                 case OPERAND:
                     if (types.length == 1) {
@@ -211,6 +209,9 @@ public class Expression {
                     }
             }
 
+        }
+        if(parenthesesCount!=0){
+            return false;
         }
         return true;
     }
@@ -257,11 +258,4 @@ public class Expression {
         }
     }
 
-    private boolean verifyOpen(ExpressionParts[] peices, int indexToCheck) {
-        return true;
-    }
-
-    private boolean verifyClosed(ExpressionParts[] peices, int indexToCheck) {
-        return true;
-    }
 }
