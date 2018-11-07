@@ -36,7 +36,7 @@ public class Main {
     }
 
     public static void testCase() {
-        StringTokenizer st = new StringTokenizer("");
+        StringTokenizer st = new StringTokenizer("( 8 + 9 ) * 9");
         int length = st.countTokens();
         String[] sa = new String[length];
         for (int i = 0; i < length; i++) {
