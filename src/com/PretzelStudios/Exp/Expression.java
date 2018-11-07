@@ -64,9 +64,11 @@ public class Expression {
                         types[i] = ExpressionParts.MODULO;
                         break;
                     case '(':
-                        throw new UnsupportedOperatorException(this, possibility);
+                        types[i] = ExpressionParts.OPEN_PARENS;
+                        break;
                     case ')':
-                        throw new UnsupportedOperatorException(this, possibility);
+                        types[i] = ExpressionParts.CLOSING_PARENS;
+                        break;
                     default: //unless it isn't supported
                         throw new UnsupportedOperatorException(this, possibility);
                 }
@@ -157,9 +159,15 @@ public class Expression {
                     }
                     break;
                 case OPEN_PARENS:
-                    return false; //not supported right now
+                    if (!verifyOpen(types, i)) {
+                        return false;
+                    }
+                    break;
                 case CLOSING_PARENS:
-                    return false; //not supported right now
+                    if (!verifyClosed(types, i)) {
+                        return false;
+                    }
+                    break;
                 case OPERAND:
                     if (types.length == 1) {
 
@@ -199,8 +207,6 @@ public class Expression {
                                 return false;
                             case OPEN_PARENS:
                                 return false;
-                            case CLOSING_PARENS:
-                                return false;
                         }
                     }
             }
@@ -230,10 +236,10 @@ public class Expression {
         } else if (indexToCheck + 1 == peices.length) {
             return false;
         } else {
-            if (peices[indexToCheck - 1] != ExpressionParts.OPERAND) { //if the thing before is an operator
+            if (peices[indexToCheck - 1] != ExpressionParts.OPERAND & peices[indexToCheck - 1] != ExpressionParts.CLOSING_PARENS) { //if the thing before is an operator
                 return false;
             }
-            if (peices[indexToCheck + 1] != ExpressionParts.OPERAND) { //if the thing after is an operator
+            if (peices[indexToCheck + 1] != ExpressionParts.OPERAND&peices[indexToCheck + 1] != ExpressionParts.OPEN_PARENS) { //if the thing after is an operator
                 switch (peices[indexToCheck + 1]) {
                     case COS_SYMBOL:
                         break;
@@ -251,5 +257,11 @@ public class Expression {
         }
     }
 
+    private boolean verifyOpen(ExpressionParts[] peices, int indexToCheck) {
+        return true;
+    }
 
+    private boolean verifyClosed(ExpressionParts[] peices, int indexToCheck) {
+        return true;
+    }
 }

@@ -22,6 +22,9 @@ public class Main {
                 case 1:
                     testCalc();
                     break;
+                case 2:
+                    testCase();
+                    break;
             }
         } else {
             System.out.println("Usage: Calculand [operating mode - 0,1]");
@@ -29,6 +32,22 @@ public class Main {
 
 
         System.out.println("Star me on GitHub!");
+
+    }
+
+    public static void testCase() {
+        StringTokenizer st = new StringTokenizer("");
+        int length = st.countTokens();
+        String[] sa = new String[length];
+        for (int i = 0; i < length; i++) {
+            sa[i] = st.nextToken();
+        }
+
+        try{
+            new Expression(sa);
+        }catch (InvalidExpressionException e){
+            e.printStackTrace();
+        }
 
     }
 
@@ -115,7 +134,7 @@ public class Main {
         for (int i = 0; i < length; i++) {
             sa[i] = st.nextToken();
         }
-        if (sa.length==0){
+        if (sa.length == 0) {
             return "error".toUpperCase();
         }
 
@@ -190,7 +209,7 @@ public class Main {
             for (int i = 0; i < e.length; i++) {
                 switch (e.types[i]) {
                     case MODULO:
-                        Util.resolveTwoOp(e, new Expression(e.operands[i - 1]% e.operands[i + 1]), i - 1);
+                        Util.resolveTwoOp(e, new Expression(e.operands[i - 1] % e.operands[i + 1]), i - 1);
                         i = -1;
                         break;
                     default:
