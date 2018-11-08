@@ -6,11 +6,4 @@ public class InvalidExpressionException extends Exception {
     public InvalidExpressionException(Expression invalidExp) {
         this.invalidExp = invalidExp;
     }
-//    public InvalidExpressionException(){
-//
-//    }
-
-    public Expression getInvalidExp() {
-        return invalidExp;
-    }
 }

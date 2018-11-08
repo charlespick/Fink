@@ -83,7 +83,7 @@ public class Expression {
         }
     }
 
-    public Expression(){
+    public Expression() {
         length = 0;
         types = new ExpressionParts[0];
         operands = new double[0];
@@ -97,7 +97,7 @@ public class Expression {
         operands[0] = operand;
     }
 
-    public void update(){
+    public void update() {
         length = types.length;
     }
 
@@ -172,6 +172,9 @@ public class Expression {
                     break;
                 case OPEN_PARENS:
                     parenthesesCount++;
+                    if(types[i+1]==ExpressionParts.CLOSING_PARENS){
+                        return false;
+                    }
                     break;
                 case CLOSING_PARENS:
                     parenthesesCount--;
@@ -220,7 +223,7 @@ public class Expression {
             }
 
         }
-        if(parenthesesCount!=0){
+        if (parenthesesCount != 0) {
             return false;
         }
         return true;
@@ -250,7 +253,7 @@ public class Expression {
             if (peices[indexToCheck - 1] != ExpressionParts.OPERAND & peices[indexToCheck - 1] != ExpressionParts.CLOSING_PARENS) { //if the thing before is an operator
                 return false;
             }
-            if (peices[indexToCheck + 1] != ExpressionParts.OPERAND&peices[indexToCheck + 1] != ExpressionParts.OPEN_PARENS) { //if the thing after is an operator
+            if (peices[indexToCheck + 1] != ExpressionParts.OPERAND & peices[indexToCheck + 1] != ExpressionParts.OPEN_PARENS) { //if the thing after is an operator
                 switch (peices[indexToCheck + 1]) {
                     case COS_SYMBOL:
                         break;
