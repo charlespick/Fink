@@ -36,17 +36,17 @@ public class Main {
     }
 
     public static void testCase() {
-        StringTokenizer st = new StringTokenizer("( 8 + 9 ) * 9");
+        StringTokenizer st = new StringTokenizer("is charles a god or vaguely passable");
         int length = st.countTokens();
         String[] sa = new String[length];
         for (int i = 0; i < length; i++) {
             sa[i] = st.nextToken();
         }
 
-        try{
+        try {
             new Expression(sa);
-        }catch (InvalidExpressionException e){
-            e.printStackTrace();
+        } catch (InvalidExpressionException e) {
+            System.out.println("lol no");
         }
 
     }
@@ -143,6 +143,30 @@ public class Main {
             e = new Expression(sa);
         } catch (InvalidExpressionException iee) {
             return "error".toUpperCase();
+        }
+
+        boolean parenthsMightExist = true;
+        while (parenthsMightExist) {
+
+            int openParenthsIndex;
+            int closedParenthsIndex = 0;
+            for (int i = 0; i < e.length; i++) {
+                switch (e.types[i]) {
+                    case OPEN_PARENS:
+                        openParenthsIndex = i;
+                        break;
+                    case CLOSING_PARENS:
+                        closedParenthsIndex = i;
+                        break;
+                }
+                if (closedParenthsIndex == 0) {
+                    i = e.length + 10;
+                    break;
+                }
+            }
+            
+
+
         }
 
 
