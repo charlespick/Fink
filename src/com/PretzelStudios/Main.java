@@ -22,6 +22,9 @@ public class Main {
                 case 1:
                     testCalc();
                     break;
+                case 2:
+                    testCase();
+                    break;
             }
         } else {
             System.out.println("Usage: Calculand [operating mode - 0,1]");
@@ -29,6 +32,29 @@ public class Main {
 
 
         System.out.println("Star me on GitHub!");
+
+    }
+
+    public static void testCase() {
+        StringTokenizer st = new StringTokenizer("5 + 8 - 9 * 7");
+        int length = st.countTokens();
+        String[] sa = new String[length];
+        for (int i = 0; i < length; i++) {
+            sa[i] = st.nextToken();
+        }
+        Expression e;
+        try {
+            e = new Expression(sa);
+            Expression middle = Util.takeMiddle(e, 2, 4);
+            System.out.println(middle.toString());
+            Util.resolveAnything(e, solveNoParenths(middle), 2, 4);
+            System.out.println(e);
+
+
+        } catch (InvalidExpressionException iee) {
+            System.out.println("lol no");
+        }
+
 
     }
 
@@ -115,7 +141,7 @@ public class Main {
         for (int i = 0; i < length; i++) {
             sa[i] = st.nextToken();
         }
-        if (sa.length==0){
+        if (sa.length == 0) {
             return "error".toUpperCase();
         }
 
@@ -126,7 +152,41 @@ public class Main {
             return "error".toUpperCase();
         }
 
+        boolean parenthsMightExist = true;
+        while (parenthsMightExist) {
 
+            int openParenthsIndex = -1;
+            int closedParenthsIndex = -1;
+            for (int i = 0; i < e.length; i++) {
+                switch (e.types[i]) {
+                    case OPEN_PARENS:
+                        openParenthsIndex = i;
+                        break;
+                    case CLOSING_PARENS:
+                        closedParenthsIndex = i;
+                        break;
+                }
+                if (closedParenthsIndex > -1) {
+                    i = e.length + 10;
+                    break;
+                }
+                if(openParenthsIndex==-1&closedParenthsIndex==-1&i+1==e.length){ //this failed
+                    i = e.length + 10;
+                    parenthsMightExist=false;
+                    break;
+                }
+            }
+            //check to see if I found any parenths
+            if(parenthsMightExist){
+                Util.resolveAnything(e, solveNoParenths(Util.takeMiddle(e, openParenthsIndex+1, closedParenthsIndex-1)), openParenthsIndex, closedParenthsIndex);
+            }
+//resolve with solve here
+        }
+        e = solveNoParenths(e);
+        return e.toString();
+    }
+
+    public static Expression solveNoParenths(Expression e) {
         //Check for and compute all one operands, right to left
         boolean oneOpMightExist = true;
         while (oneOpMightExist) {
@@ -190,7 +250,7 @@ public class Main {
             for (int i = 0; i < e.length; i++) {
                 switch (e.types[i]) {
                     case MODULO:
-                        Util.resolveTwoOp(e, new Expression(e.operands[i - 1]% e.operands[i + 1]), i - 1);
+                        Util.resolveTwoOp(e, new Expression(e.operands[i - 1] % e.operands[i + 1]), i - 1);
                         i = -1;
                         break;
                     default:
@@ -274,6 +334,7 @@ public class Main {
                 }
             }
         }
-        return e.toString();
+        return e;
     }
+
 }

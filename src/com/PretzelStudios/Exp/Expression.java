@@ -8,6 +8,7 @@ public class Expression {
     public double[] operands;
 
     public Expression(String[] expression) throws InvalidExpressionException {
+
         //Save original input
 
         this.length = expression.length;
@@ -64,9 +65,11 @@ public class Expression {
                         types[i] = ExpressionParts.MODULO;
                         break;
                     case '(':
-                        throw new UnsupportedOperatorException(this, possibility);
+                        types[i] = ExpressionParts.OPEN_PARENS;
+                        break;
                     case ')':
-                        throw new UnsupportedOperatorException(this, possibility);
+                        types[i] = ExpressionParts.CLOSING_PARENS;
+                        break;
                     default: //unless it isn't supported
                         throw new UnsupportedOperatorException(this, possibility);
                 }
@@ -80,12 +83,22 @@ public class Expression {
         }
     }
 
+    public Expression() {
+        length = 0;
+        types = new ExpressionParts[0];
+        operands = new double[0];
+    }
+
     public Expression(double operand) {
         length = 1;
         types = new ExpressionParts[1];
         types[0] = ExpressionParts.OPERAND;
         operands = new double[1];
         operands[0] = operand;
+    }
+
+    public void update() {
+        length = types.length;
     }
 
     @Override
@@ -103,6 +116,7 @@ public class Expression {
     }
 
     public boolean verify() {
+        int parenthesesCount = 0;
         for (int i = 0; i < types.length; i++) {
 
             switch (types[i]) {
@@ -157,9 +171,14 @@ public class Expression {
                     }
                     break;
                 case OPEN_PARENS:
-                    return false; //not supported right now
+                    parenthesesCount++;
+                    if(types[i+1]==ExpressionParts.CLOSING_PARENS){
+                        return false;
+                    }
+                    break;
                 case CLOSING_PARENS:
-                    return false; //not supported right now
+                    parenthesesCount--;
+                    break;
                 case OPERAND:
                     if (types.length == 1) {
 
@@ -199,12 +218,13 @@ public class Expression {
                                 return false;
                             case OPEN_PARENS:
                                 return false;
-                            case CLOSING_PARENS:
-                                return false;
                         }
                     }
             }
 
+        }
+        if (parenthesesCount != 0) {
+            return false;
         }
         return true;
     }
@@ -230,10 +250,10 @@ public class Expression {
         } else if (indexToCheck + 1 == peices.length) {
             return false;
         } else {
-            if (peices[indexToCheck - 1] != ExpressionParts.OPERAND) { //if the thing before is an operator
+            if (peices[indexToCheck - 1] != ExpressionParts.OPERAND & peices[indexToCheck - 1] != ExpressionParts.CLOSING_PARENS) { //if the thing before is an operator
                 return false;
             }
-            if (peices[indexToCheck + 1] != ExpressionParts.OPERAND) { //if the thing after is an operator
+            if (peices[indexToCheck + 1] != ExpressionParts.OPERAND & peices[indexToCheck + 1] != ExpressionParts.OPEN_PARENS) { //if the thing after is an operator
                 switch (peices[indexToCheck + 1]) {
                     case COS_SYMBOL:
                         break;
@@ -250,6 +270,5 @@ public class Expression {
             return true;
         }
     }
-
 
 }
