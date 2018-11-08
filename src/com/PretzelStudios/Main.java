@@ -42,16 +42,18 @@ public class Main {
         for (int i = 0; i < length; i++) {
             sa[i] = st.nextToken();
         }
-Expression e;
+        Expression e;
         try {
             e = new Expression(sa);
             Expression middle = Util.takeMiddle(e, 2, 4);
             System.out.println(middle.toString());
+            Util.resolveAnything(e, solveNoParenths(middle), 2, 4);
+            System.out.println(e);
+
+
         } catch (InvalidExpressionException iee) {
             System.out.println("lol no");
         }
-
-
 
 
     }
@@ -153,8 +155,8 @@ Expression e;
         boolean parenthsMightExist = true;
         while (parenthsMightExist) {
 
-            int openParenthsIndex;
-            int closedParenthsIndex = 0;
+            int openParenthsIndex = -1;
+            int closedParenthsIndex = -1;
             for (int i = 0; i < e.length; i++) {
                 switch (e.types[i]) {
                     case OPEN_PARENS:
@@ -164,17 +166,27 @@ Expression e;
                         closedParenthsIndex = i;
                         break;
                 }
-                if (closedParenthsIndex == 0) {
+                if (closedParenthsIndex > -1) {
                     i = e.length + 10;
                     break;
                 }
+                if(openParenthsIndex==-1&closedParenthsIndex==-1&i+1==e.length){ //this failed
+                    i = e.length + 10;
+                    parenthsMightExist=false;
+                    break;
+                }
             }
-
-
-
+            //check to see if I found any parenths
+            if(parenthsMightExist){
+                Util.resolveAnything(e, solveNoParenths(Util.takeMiddle(e, openParenthsIndex+1, closedParenthsIndex-1)), openParenthsIndex, closedParenthsIndex);
+            }
+//resolve with solve here
         }
+        e = solveNoParenths(e);
+        return e.toString();
+    }
 
-
+    public static Expression solveNoParenths(Expression e) {
         //Check for and compute all one operands, right to left
         boolean oneOpMightExist = true;
         while (oneOpMightExist) {
@@ -322,6 +334,7 @@ Expression e;
                 }
             }
         }
-        return e.toString();
+        return e;
     }
+
 }
