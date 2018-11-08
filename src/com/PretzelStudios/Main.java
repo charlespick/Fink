@@ -36,18 +36,23 @@ public class Main {
     }
 
     public static void testCase() {
-        StringTokenizer st = new StringTokenizer("is charles a god or vaguely passable");
+        StringTokenizer st = new StringTokenizer("5 + 8 - 9 * 7");
         int length = st.countTokens();
         String[] sa = new String[length];
         for (int i = 0; i < length; i++) {
             sa[i] = st.nextToken();
         }
-
+Expression e;
         try {
-            new Expression(sa);
-        } catch (InvalidExpressionException e) {
+            e = new Expression(sa);
+            Expression middle = Util.takeMiddle(e, 2, 4);
+            System.out.println(middle.toString());
+        } catch (InvalidExpressionException iee) {
             System.out.println("lol no");
         }
+
+
+
 
     }
 
@@ -164,7 +169,7 @@ public class Main {
                     break;
                 }
             }
-            
+
 
 
         }

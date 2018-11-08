@@ -83,12 +83,22 @@ public class Expression {
         }
     }
 
+    public Expression(){
+        length = 0;
+        types = new ExpressionParts[0];
+        operands = new double[0];
+    }
+
     public Expression(double operand) {
         length = 1;
         types = new ExpressionParts[1];
         types[0] = ExpressionParts.OPERAND;
         operands = new double[1];
         operands[0] = operand;
+    }
+
+    public void update(){
+        length = types.length;
     }
 
     @Override
