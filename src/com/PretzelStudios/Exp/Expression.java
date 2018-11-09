@@ -75,10 +75,7 @@ public class Expression {
                 }
             }
         }
-        if (!verify()) {
-            throw new InvalidExpressionException(this);
-        }
-        if (length == 1) {
+        if (!verify()|length == 1) { //check if the stored expression is valid
             throw new InvalidExpressionException(this);
         }
     }
@@ -117,7 +114,7 @@ public class Expression {
 
     public boolean verify() {
         int parenthesesCount = 0;
-        for (int i = 0; i < types.length; i++) {
+        for (int i = 0; i < types.length; i++) { //Iterate through arrays
 
             switch (types[i]) {
                 case DIVISION_SYMBOL:

@@ -35,7 +35,7 @@ public class Main {
 
     }
 
-    public static void testCase() {
+    public static void testCase() { //for debugging
         StringTokenizer st = new StringTokenizer("5 + 8 - 9 * 7");
         int length = st.countTokens();
         String[] sa = new String[length];
@@ -112,10 +112,6 @@ public class Main {
     }
 
     public static void startCalc() {
-
-        // your code here to get user input, and calculate/print results. You'll call
-        // the calculate(String s) as part of your code here, which returns a String
-        // with the result to print.
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("Enter an expression to calculate, or enter \"quit\" to leave");
@@ -129,12 +125,11 @@ public class Main {
 
     public static String calculate(String s) {
         //this seems like a weird place to do this but whatever
-
         if (s.toUpperCase().equals("QUIT")) {
             return "quit";
         }
 
-        //Capture input and create object
+        //Capture input
         StringTokenizer st = new StringTokenizer(s);
         int length = st.countTokens();
         String[] sa = new String[length];
@@ -144,7 +139,7 @@ public class Main {
         if (sa.length == 0) {
             return "error".toUpperCase();
         }
-
+        //Create object
         Expression e;
         try {
             e = new Expression(sa);
@@ -152,9 +147,9 @@ public class Main {
             return "error".toUpperCase();
         }
 
+        //Check for parentheses
         boolean parenthsMightExist = true;
         while (parenthsMightExist) {
-
             int openParenthsIndex = -1;
             int closedParenthsIndex = -1;
             for (int i = 0; i < e.length; i++) {
@@ -178,16 +173,17 @@ public class Main {
             }
             //check to see if I found any parenths
             if(parenthsMightExist){
+                //If so, resolve
                 Util.resolveAnything(e, solveNoParenths(Util.takeMiddle(e, openParenthsIndex+1, closedParenthsIndex-1)), openParenthsIndex, closedParenthsIndex);
             }
-//resolve with solve here
         }
+        //Resolve the remainder of the expression
         e = solveNoParenths(e);
         return e.toString();
     }
 
     public static Expression solveNoParenths(Expression e) {
-        //Check for and compute all one operands, right to left
+        //Check for and compute all one operand operations, right to left
         boolean oneOpMightExist = true;
         while (oneOpMightExist) {
             //search for trig ops from right to left
@@ -243,7 +239,7 @@ public class Main {
                 }
             }
         }
-
+        //Check for and computer all modulo, left to right
         boolean modMightExist = true;
         while (modMightExist) {
             //search for exp ops from left to right
@@ -261,7 +257,6 @@ public class Main {
                 }
             }
         }
-
         //Check for and compute all multiplication, left to right
         boolean multMightExist = true;
         while (multMightExist) {

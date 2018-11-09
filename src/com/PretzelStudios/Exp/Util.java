@@ -59,14 +59,17 @@ public abstract class Util {
     }
 
     public static Expression takeMiddle(Expression full, int beginningIndex, int endingIndex) {
+        //Make new arrays
         Expression e = new Expression();
         ExpressionParts[] ep = new ExpressionParts[endingIndex - beginningIndex + 1];
         double[] operands = new double[endingIndex - beginningIndex + 1];
 
+        //Move in targeted data
         for (int i = 0; i < endingIndex - beginningIndex + 1; i++) {
             ep[i] = full.types[i + beginningIndex];
             operands[i] = full.operands[i + beginningIndex];
         }
+        //Save off arrays
         e.types = ep;
         e.operands = operands;
         e.update();
