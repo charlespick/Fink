@@ -16,7 +16,7 @@
     <session id="-1007456186">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="11" />
+          <entry key="project.closed" value="12" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="4" />
           <entry key="project.open.time.20" value="2" />
@@ -77,7 +77,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/Expression.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-549">
+            <state relative-caret-position="-228">
               <caret line="182" column="47" selection-start-line="182" selection-start-column="47" selection-end-line="182" selection-end-column="47" />
               <folding>
                 <element signature="method#Expression#0;class#Expression#0" />
@@ -177,7 +177,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541733436729" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541733440759" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -264,15 +264,15 @@
       <window_info id="Capture Tool" order="2" />
       <window_info id="Favorites" order="3" sideWeight="0.50791854" side_tool="true" weight="0.2802198" />
       <window_info id="Image Layers" order="4" />
-      <window_info content_ui="combo" id="Project" order="5" sideWeight="0.49023092" visible="true" weight="0.2832723" />
-      <window_info id="Structure" order="6" sideWeight="0.5097691" side_tool="true" visible="true" weight="0.2832723" />
+      <window_info content_ui="combo" id="Project" order="5" sideWeight="0.49095023" visible="true" weight="0.2832723" />
+      <window_info id="Structure" order="6" sideWeight="0.5090498" side_tool="true" visible="true" weight="0.2832723" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32959184" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.5005325" side_tool="true" weight="0.32772276" />
       <window_info anchor="bottom" id="Messages" order="2" weight="0.32918552" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32918552" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.32959184" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.49946752" visible="true" weight="0.36312217" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.49946752" weight="0.36312217" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.35859728" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -451,7 +451,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/Expression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-549">
+        <state relative-caret-position="-228">
           <caret line="182" column="47" selection-start-line="182" selection-start-column="47" selection-end-line="182" selection-end-column="47" />
           <folding>
             <element signature="method#Expression#0;class#Expression#0" />
