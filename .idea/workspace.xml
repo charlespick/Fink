@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb588f30-6e21-4653-a1c3-794a9155955c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/PretzelStudios/Exp/Expression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/PretzelStudios/Exp/Expression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/PretzelStudios/Exp/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/PretzelStudios/Exp/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/PretzelStudios/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/PretzelStudios/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/PretzelStudios/Exp/ExpressionParts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/PretzelStudios/Exp/ExpressionParts.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,23 +29,23 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="12197" />
+          <entry key="java" value="12864" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="12197" />
+          <entry key="JAVA" value="12864" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="18" />
+          <entry key="java" value="19" />
           <entry key="txt" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="18" />
+          <entry key="JAVA" value="19" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
@@ -62,7 +60,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
+            <state relative-caret-position="381">
               <caret line="184" column="59" selection-start-line="184" selection-start-column="59" selection-end-line="184" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -76,73 +74,17 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/Util.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="60" column="94" selection-start-line="60" selection-start-column="94" selection-end-line="60" selection-end-column="94" />
-              <folding>
-                <element signature="method#resolveTwoOp#0;class#Util#0" />
-                <element signature="method#resolveOneOp#0;class#Util#0" />
-                <element signature="method#takeMiddle#0;class#Util#0" />
-                <element signature="method#resolveAnything#0;class#Util#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/Expression.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-559">
-              <caret line="116" column="73" selection-start-line="116" selection-start-column="73" selection-end-line="116" selection-end-column="73" />
+            <state relative-caret-position="-549">
+              <caret line="182" column="47" selection-start-line="182" selection-start-column="47" selection-end-line="182" selection-end-column="47" />
               <folding>
                 <element signature="method#Expression#0;class#Expression#0" />
                 <element signature="method#Expression#1;class#Expression#0" />
                 <element signature="method#toString#0;class#Expression#0" />
-                <element signature="method#verifyOneOp#0;class#Expression#0" />
                 <element signature="method#verifyTwoOp#0;class#Expression#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/UnsupportedOperatorException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/ExpressionParts.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="279" selection-start-line="3" selection-start-column="279" selection-end-line="3" selection-end-column="279" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/InvalidExpressionException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
-              <folding>
-                <element signature="e#190#191#0" expanded="true" />
-                <element signature="e#234#235#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/problems.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -180,10 +122,10 @@
         <option value="$PROJECT_DIR$/src/com/PretzelStudios/Exp/UnsupportedExpressionException.java" />
         <option value="$PROJECT_DIR$/src/com/PretzelStudios/Operations.java" />
         <option value="$PROJECT_DIR$/src/com/PretzelStudios/Exp/UnsupportedOperatorException.java" />
-        <option value="$PROJECT_DIR$/src/com/PretzelStudios/Exp/ExpressionParts.java" />
         <option value="$PROJECT_DIR$/src/com/PretzelStudios/Exp/InvalidExpressionException.java" />
         <option value="$PROJECT_DIR$/src/com/PretzelStudios/Main.java" />
         <option value="$PROJECT_DIR$/src/com/PretzelStudios/Exp/Util.java" />
+        <option value="$PROJECT_DIR$/src/com/PretzelStudios/Exp/ExpressionParts.java" />
         <option value="$PROJECT_DIR$/src/com/PretzelStudios/Exp/Expression.java" />
       </list>
     </option>
@@ -235,7 +177,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541732127544" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541733436729" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -322,15 +264,15 @@
       <window_info id="Capture Tool" order="2" />
       <window_info id="Favorites" order="3" sideWeight="0.50791854" side_tool="true" weight="0.2802198" />
       <window_info id="Image Layers" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" sideWeight="0.49095023" visible="true" weight="0.2832723" />
-      <window_info id="Structure" order="6" sideWeight="0.5090498" side_tool="true" visible="true" weight="0.2832723" />
+      <window_info content_ui="combo" id="Project" order="5" sideWeight="0.49023092" visible="true" weight="0.2832723" />
+      <window_info id="Structure" order="6" sideWeight="0.5097691" side_tool="true" visible="true" weight="0.2832723" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32959184" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.5005325" side_tool="true" weight="0.32772276" />
       <window_info anchor="bottom" id="Messages" order="2" weight="0.32918552" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.32918552" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.32959184" />
-      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.49946752" weight="0.36312217" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.49946752" visible="true" weight="0.36312217" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.35859728" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -447,18 +389,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Operations.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Main.java">
+    <entry file="file://$PROJECT_DIR$/problems.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="184" column="59" selection-start-line="184" selection-start-column="59" selection-end-line="184" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#testCase#0;class#Main#0" />
-            <element signature="method#testCalc#0;class#Main#0" />
-            <element signature="method#startCalc#0;class#Main#0" />
-            <element signature="method#calculate#0;class#Main#0" />
-            <element signature="method#solveNoParenths#0;class#Main#0" />
-          </folding>
+        <state relative-caret-position="75">
+          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -473,10 +407,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/problems.txt">
+    <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/ExpressionParts.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+          <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/UnsupportedOperatorException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
@@ -493,31 +434,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/Expression.java">
+    <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-559">
-          <caret line="116" column="73" selection-start-line="116" selection-start-column="73" selection-end-line="116" selection-end-column="73" />
+        <state relative-caret-position="381">
+          <caret line="184" column="59" selection-start-line="184" selection-start-column="59" selection-end-line="184" selection-end-column="59" />
           <folding>
-            <element signature="method#Expression#0;class#Expression#0" />
-            <element signature="method#Expression#1;class#Expression#0" />
-            <element signature="method#toString#0;class#Expression#0" />
-            <element signature="method#verifyOneOp#0;class#Expression#0" />
-            <element signature="method#verifyTwoOp#0;class#Expression#0" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#testCase#0;class#Main#0" />
+            <element signature="method#testCalc#0;class#Main#0" />
+            <element signature="method#startCalc#0;class#Main#0" />
+            <element signature="method#calculate#0;class#Main#0" />
+            <element signature="method#solveNoParenths#0;class#Main#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/UnsupportedOperatorException.java">
+    <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/Expression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/PretzelStudios/Exp/ExpressionParts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="279" selection-start-line="3" selection-start-column="279" selection-end-line="3" selection-end-column="279" />
+        <state relative-caret-position="-549">
+          <caret line="182" column="47" selection-start-line="182" selection-start-column="47" selection-end-line="182" selection-end-column="47" />
+          <folding>
+            <element signature="method#Expression#0;class#Expression#0" />
+            <element signature="method#Expression#1;class#Expression#0" />
+            <element signature="method#toString#0;class#Expression#0" />
+            <element signature="method#verifyTwoOp#0;class#Expression#0" />
+          </folding>
         </state>
       </provider>
     </entry>

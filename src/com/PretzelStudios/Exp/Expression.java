@@ -100,8 +100,8 @@ public class Expression {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (int j = 0; j <= this.length - 1; j++) {
+        StringBuilder sb = new StringBuilder(); //I like using .append
+        for (int j = 0; j <= this.length - 1; j++) { //Iterate
             if (types[j] == ExpressionParts.OPERAND) {
                 sb.append(operands[j]);
             } else {
@@ -118,7 +118,7 @@ public class Expression {
 
             switch (types[i]) {
                 case DIVISION_SYMBOL:
-                    if (!verifyTwoOp(types, i)) {
+                    if (!verifyTwoOp(types, i)) { //If checking the neighboring peices don't match up, return false
                         return false;
                     }
                     break;
@@ -169,7 +169,7 @@ public class Expression {
                     break;
                 case OPEN_PARENS:
                     parenthesesCount++;
-                    if(types[i+1]==ExpressionParts.CLOSING_PARENS){
+                    if(types[i+1]==ExpressionParts.CLOSING_PARENS){ //There's no point in entering ( )
                         return false;
                     }
                     break;
@@ -200,7 +200,7 @@ public class Expression {
                             case CLOSING_PARENS:
                                 return false;
                         }
-                    } else if (i + 1 == types.length) {
+                    } else if (i + 1 == types.length) { //if we're at the end
                         switch (types[i - 1]) {
                             case CLOSING_PARENS:
                                 return false;
@@ -209,7 +209,7 @@ public class Expression {
                             case OPERAND:
                                 return false;
                         }
-                    } else {
+                    } else { //otherwise we're in the middle
                         switch (types[i + 1]) {
                             case OPERAND:
                                 return false;
@@ -220,7 +220,7 @@ public class Expression {
             }
 
         }
-        if (parenthesesCount != 0) {
+        if (parenthesesCount != 0) { //was there a valis number of parentheses
             return false;
         }
         return true;
@@ -229,29 +229,30 @@ public class Expression {
     private boolean verifyOneOp(ExpressionParts[] peices, int indexToCheck) {
         try {
             if (peices[indexToCheck + 1] != ExpressionParts.OPERAND) {
+                //There's only a few things you can have after a single op operation
                 if (peices[indexToCheck + 1] == ExpressionParts.COS_SYMBOL | peices[indexToCheck + 1] == ExpressionParts.TAN_SYMBOL | peices[indexToCheck + 1] == ExpressionParts.SIN_SYMBOL | peices[indexToCheck + 1] == ExpressionParts.ABSOLUTE_VALUE | peices[indexToCheck + 1] == ExpressionParts.RADICAL | peices[indexToCheck + 1] == ExpressionParts.ROUND) {
                     return true;
                 }
 
                 return false;
             }
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } catch (ArrayIndexOutOfBoundsException e) { //if there's nothing after
             return false;
         }
         return true;
     }
 
     private boolean verifyTwoOp(ExpressionParts[] peices, int indexToCheck) {
-        if (indexToCheck == 0) {
+        if (indexToCheck == 0) { //you can't have a 2 op at the beginning
             return false;
-        } else if (indexToCheck + 1 == peices.length) {
+        } else if (indexToCheck + 1 == peices.length) { //you can't have a 2 op at the end
             return false;
         } else {
             if (peices[indexToCheck - 1] != ExpressionParts.OPERAND & peices[indexToCheck - 1] != ExpressionParts.CLOSING_PARENS) { //if the thing before is an operator
                 return false;
             }
             if (peices[indexToCheck + 1] != ExpressionParts.OPERAND & peices[indexToCheck + 1] != ExpressionParts.OPEN_PARENS) { //if the thing after is an operator
-                switch (peices[indexToCheck + 1]) {
+                switch (peices[indexToCheck + 1]) { //these things are ok though
                     case COS_SYMBOL:
                         break;
                     case SIN_SYMBOL:
